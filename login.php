@@ -15,7 +15,7 @@
       }
       ?>
 
-      <form action="proses_login.php" method="POST">
+      <form action="proses_login_admin.php" method="POST">
         <table>
             <tr>
                 <td>Email</td>
