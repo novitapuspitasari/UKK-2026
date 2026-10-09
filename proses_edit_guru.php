@@ -1,3 +1,4 @@
+```php
 <?php
 // proses_edit_guru.php
 include 'includes/cek_session.php';
@@ -9,11 +10,11 @@ $nama = $_POST['nama'];
 $email = $_POST['email'];
 $status_aktif = $_POST['status_aktif'];
 
-$sql = "UPDATE tbl_guru SET
+$sql = "UPDATE t_guru SET
         nip = '$nip',
         nama = '$nama',
         email = '$email',
-        status_aktif = '$status_aktif',
+        status_aktif = '$status_aktif'
         WHERE id = '$id'";
 
 $hasil = mysqli_query($koneksi, $sql);
@@ -25,3 +26,4 @@ if ($hasil) {
     echo "Gagal mengubah data guru: " . mysqli_error($koneksi);
 }
 ?>
+```

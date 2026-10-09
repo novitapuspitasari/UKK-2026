@@ -38,7 +38,7 @@ include 'includes/cek_session.php';
                 <td>Nama</td>
                 <td>:</td>
                 <td>
-                    <input type="email" name="nama" required>
+                    <input type="text" name="nama" required>
                 </td>
             </tr>
 
@@ -46,7 +46,7 @@ include 'includes/cek_session.php';
                 <td>Jenis Kelamin</td>
                 <td>:</td>
                 <td>
-                    <input type="email" name="jenis_kelamin" required>
+                    <input type="text" name="jenis_kelamin" required>
                 </td>
             </tr>
 
@@ -54,7 +54,7 @@ include 'includes/cek_session.php';
                 <td>Tanggal Lahir</td>
                 <td>:</td>
                 <td>
-                    <input type="email" name="nama" required>
+                    <input type="text" name="tanggal_lahir" required>
                 </td>
             </tr>
 
@@ -62,7 +62,7 @@ include 'includes/cek_session.php';
                 <td>Alamat</td>
                 <td>:</td>
                 <td>
-                    <input type="email" name="nama" required>
+                    <input type="text" name="alamat" required>
                 </td>
             </tr>
             <tr>
@@ -86,7 +86,7 @@ include 'includes/cek_session.php';
     </form>
 
     <p>
-        <a href="kelola_guru.php">Kembali</a>
+        <a href="kelola_siswa.php">Kembali</a>
     </p>
 
 </body>
