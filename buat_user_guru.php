@@ -1,12 +1,12 @@
 <?php
-// buat_user_admin.php
-// Jalankan file  ini SATU KALI saja lewat browser untuk membuat user admin
+// buat_user_guru.php
+// Jalankan file  ini SATU KALI saja lewat browser untuk membuat user guru
 include 'config/koneksi.php';
 
-$name     = 'Siswa';
-$email = 'siswa@gmail.com';
-$password = password_hash('siswa123', PASSWORD_DEFAULT);
-$role     ='siswa';
+$name     = 'Guru';
+$email = 'guru@gmail.com';
+$password = password_hash('guru123', PASSWORD_DEFAULT);
+$role     ='guru';
 
 $sql = "INSERT INTO t_users ( name, email, password, role)";
 $sql .= " VALUES ( '$name', '$email', '$password' , '$role')";
