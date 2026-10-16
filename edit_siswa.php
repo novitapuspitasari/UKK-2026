@@ -27,6 +27,15 @@ $data = mysqli_fetch_assoc($hasil);
         <table>
 
             <tr>
+                <td>ID</td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="id"
+                        value="<?php echo $data['id']; ?>" required>
+                </td>
+            </tr>
+
+            <tr>
                 <td>NIS</td>
                 <td>:</td>
                 <td>

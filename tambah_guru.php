@@ -52,6 +52,15 @@ include 'includes/cek_session.php';
                     </select>
                 </td>
             </tr>
+
+            <tr>
+                <td>User ID</td>
+                <td>:</td>
+                <td>
+                    <input type="number" name="user_id">
+                </td>
+            </tr>
+
             <tr>
                 <td colspan="3">
                     <input type="submit" value="Simpan">

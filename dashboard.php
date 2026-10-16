@@ -20,7 +20,7 @@
             </h4>
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link active">
+                    <a href="dashboard.php" class="nav-link active">
                         Dashboard
                     </a>
                 </li>
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran" class="nav-link text-white">
+                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
                         Kelola Tahun Ajaran
                     </a>
                 </li>
@@ -51,7 +51,7 @@
                 </li>
                 <hr class="text-secondary">
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-danger">
+                    <a href="logout" class="nav-link text-danger">
                         Logout
                     </a>
                 </li>
@@ -107,15 +107,7 @@
         </main>
     </div>
 </div>
-    <h2>Dashboard</h2>
-    <p>
-        Selamat datang,
-        <?php echo $_SESSION['nama_user']; ?>
-    </p>
-    <p>
-        Anda berhasil login.
-    </p>
-    <a href="logout.php">Logout</a>
+    
 </body>
 </html>
 

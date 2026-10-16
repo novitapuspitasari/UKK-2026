@@ -26,7 +26,7 @@ $hasil = mysqli_query($koneksi, $sql);
             </h4>
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link active">
+                    <a href="dashboard.php" class="nav-link text-white">
                         Dashboard
                     </a>
                 </li>
@@ -36,7 +36,7 @@ $hasil = mysqli_query($koneksi, $sql);
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_guru.php" class="nav-link text-white">
+                    <a href="kelola_guru.php" class="nav-link active">
                         Kelola Guru
                     </a>
                 </li>
@@ -46,7 +46,7 @@ $hasil = mysqli_query($koneksi, $sql);
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran" class="nav-link text-white">
+                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
                         Kelola Tahun Ajaran
                     </a>
                 </li>
@@ -70,14 +70,18 @@ $hasil = mysqli_query($koneksi, $sql);
         <p><a href="dashboard.php">Kembali ke Dashboard</a> | <a href="tambah_guru.php">Tambah Guru</a></p>
         <table class="table table-bordered border-danger">
             <tr>
+                <th>ID</th>
                 <th>NIP</th>
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Status Aktif</th>
+                <th>Dibuat</th>
+                <th>Diubah</th>
                 <th>Aksi</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($hasil)){ ?>
             <tr>
+                <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['nip']; ?></td>
                 <td><?php echo $row['nama']; ?></td>
                 <td><?php echo $row['email']; ?></td>
@@ -88,13 +92,16 @@ $hasil = mysqli_query($koneksi, $sql);
                 }
                 ?>
             </td>
+            <td><?php echo $row['created_at']; ?></td>
+
+            <td><?php echo $row['updated_at']; ?></td>
                
                 <td>
-                    <a href="edit_guru.php?id=<?php echo $row['id']; ?>"></a> 
-                        <button type="button" class="btn btn-info">Edit</button>
+                    <a href="edit_guru.php?id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-info">Edit</button></a>
                     <a href="hapus_guru.php?id=<?php echo $row['id']; ?>"
-                    onclick="return confirm('Yakin hapus barang ini?');"></a>
-                        <button type="button" class="btn btn-secondary">Hapus</button>
+                    onclick="return confirm('Yakin hapus barang ini?');">
+                        <button type="button" class="btn btn-secondary">Hapus</button></a>
                 </td> 
             </tr>
         <?php } ?>

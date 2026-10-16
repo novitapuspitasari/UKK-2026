@@ -26,7 +26,7 @@ $hasil = mysqli_query($koneksi, $sql);
             </h4>
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="dashboard.php" class="nav-link text-white">
                         Dashboard
                     </a>
                 </li>
@@ -46,7 +46,7 @@ $hasil = mysqli_query($koneksi, $sql);
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran" class="nav-link text-white">
+                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
                         Kelola Tahun Ajaran
                     </a>
                 </li>
@@ -72,6 +72,7 @@ $hasil = mysqli_query($koneksi, $sql);
         <table class="table table-bordered">
             <tr>
         
+                 <th>ID</th>
                 <th>NIS</th>
                 <th>NISN</th>
                 <th>Nama</th>
@@ -79,10 +80,13 @@ $hasil = mysqli_query($koneksi, $sql);
                 <th>Tanggal Lahir</th>
                 <th>Alamat</th>
                 <th>Status Aktif</th>
+                <th>Dibuat</th>
+                <th>Diubah</th>
                 <th>Aksi</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($hasil)){ ?>
             <tr>
+                <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['nis']; ?></td>
                 <td><?php echo $row['nisn']; ?></td>
                 <td><?php echo $row['nama']; ?></td>
@@ -96,13 +100,16 @@ $hasil = mysqli_query($koneksi, $sql);
                 }
                 ?>
             </td>
+            <td><?php echo $row['created_at']; ?></td>
+
+            <td><?php echo $row['updated_at']; ?></td>
                
                 <td>
-                    <a href="edit_guru.php?id=<?php echo $row['id']; ?>"></a>
-                         <button type="button" class="btn btn-info">Edit</button>
-                    <a href="hapus_guru.php?id=<?php echo $row['id']; ?>"
-                    onclick="return confirm('Yakin hapus barang ini?');"></a>
-                        <button type="button" class="btn btn-secondary">Hapus</button>
+                    <a href="edit_siswa.php?id=<?php echo $row['id']; ?>">
+                         <button type="button" class="btn btn-info">Edit</button></a>
+                    <a href="hapus_siswa.php?id=<?php echo $row['id']; ?>"
+                    onclick="return confirm('Yakin hapus barang ini?');">
+                        <button type="button" class="btn btn-secondary">Hapus</button></a>
                 </td> 
             </tr>
         <?php } ?>

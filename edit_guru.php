@@ -1,5 +1,5 @@
 <?php
-// edit_kelola_guru.php
+// edit_guru.php
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
@@ -72,6 +72,8 @@ $data = mysqli_fetch_assoc($hasil);
                     </select>
                 </td>
             </tr>
+
+
 
             <tr>
                 <td colspan="3">
