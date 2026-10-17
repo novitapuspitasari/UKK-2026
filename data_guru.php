@@ -10,7 +10,7 @@ $hasil = mysqli_query($koneksi, $sql);
 <html>
     <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-        <title>Kelola Guru - Sistem Pelanggaran Siswa</title>
+        <title>Data Guru - Sistem Pelanggaran Siswa</title>
     </head>
     <body>
          <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -26,28 +26,42 @@ $hasil = mysqli_query($koneksi, $sql);
             </h4>
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item mb-2">
-                    <a href="dashboard.php" class="nav-link text-white">
+                    <a href="dashboard.php" class="nav-link active">
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_siswa.php" class="nav-link text-white">
-                      Kelola Siswa
+                    <a href="data_siswa.php" class="nav-link text-white">
+                      Data Siswa
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_guru.php" class="nav-link active">
-                        Kelola Guru
+                    <a href="data_guru.php" class="nav-link text-white">
+                        Data Guru
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_kelas.php" class="nav-link text-white">
-                        Kelola Kelas
+                    <a href="data_kelas.php" class="nav-link text-white">
+                        Data Kelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
-                        Kelola Tahun Ajaran
+                    <a href="data_tahun_ajaran.php" class="nav-link text-white">
+                        Data Tahun Ajaran
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="data_wali_kelas.php" class="nav-link text-white">
+                        Data Wali Kelas
+                    </a>
+                <li class="nav-item mb-2">
+                    <a href="penempatan_siswa.php" class="nav-link text-white">
+                        Penempatan Siswa
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="kategori_pelanggaran.php" class="nav-link text-white">
+                        Kategori Pelanggaran
                     </a>
                 </li>
                 <li class="nav-item mb-2">
@@ -57,7 +71,7 @@ $hasil = mysqli_query($koneksi, $sql);
                 </li>
                 <hr class="text-secondary">
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-danger">
+                    <a href="logout" class="nav-link text-danger">
                         Logout
                     </a>
                 </li>
@@ -66,8 +80,11 @@ $hasil = mysqli_query($koneksi, $sql);
         <!-- KONTEN -->
         <main class="col-md-9 col-lg-10 p-4">
 
-        <h1>Kelola Guru</h1>
-        <p><a href="dashboard.php">Kembali ke Dashboard</a> | <a href="tambah_guru.php">Tambah Guru</a></p>
+        <h1>Data Guru</h1>
+        <p>
+            <a href="dashboard.php">Kembali ke Dashboard</a> 
+            <a href="tambah_guru.php">Tambah Guru</a>
+        </p>
         <table class="table table-bordered border-danger">
             <tr>
                 <th>ID</th>

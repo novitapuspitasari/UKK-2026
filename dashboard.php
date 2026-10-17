@@ -25,23 +25,37 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_siswa.php" class="nav-link text-white">
-                      Kelola Siswa
+                    <a href="data_siswa.php" class="nav-link text-white">
+                      Data Siswa
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_guru.php" class="nav-link text-white">
-                        Kelola Guru
+                    <a href="data_guru.php" class="nav-link text-white">
+                        Data Guru
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_kelas.php" class="nav-link text-white">
-                        Kelola Kelas
+                    <a href="data_kelas.php" class="nav-link text-white">
+                        Data Kelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
-                        Kelola Tahun Ajaran
+                    <a href="data_tahun_ajaran.php" class="nav-link text-white">
+                        Data Tahun Ajaran
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="data_wali_kelas.php" class="nav-link text-white">
+                        Data Wali Kelas
+                    </a>
+                <li class="nav-item mb-2">
+                    <a href="penempatan_siswa.php" class="nav-link text-white">
+                        Penempatan Siswa
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="kategori_pelanggaran.php" class="nav-link text-white">
+                        Kategori Pelanggaran
                     </a>
                 </li>
                 <li class="nav-item mb-2">
