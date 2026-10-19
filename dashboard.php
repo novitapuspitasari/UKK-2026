@@ -144,10 +144,10 @@ include 'includes/cek_session.php';
 
         <ul>
             <?php if ($_SESSION['role'] == 'admin') { ?>
-            <li><a href="kelola_guru.php">Kelola Guru</a></li>
-            <li><a href="kelola_siswa.php">Kelola Siswa</a></li>
-            <li><a href="kelola_kelas.php">Kelola Kelas</a></li>
-            <li><a href="kelola_tahun_ajaran.php">Kelola Tahun Ajaran</a></li>
+            <li><a href="data_guru.php">Data Guru</a></li>
+            <li><a href="data_siswa.php">Data Siswa</a></li>
+            <li><a href="data_kelas.php">Data Kelas</a></li>
+            <li><a href="data_tahun_ajaran.php">Data Tahun Ajaran</a></li>
         <?php } ?>
 
         <?php if($_SESSION['role'] == 'guru') { ?>
