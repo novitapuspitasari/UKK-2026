@@ -1,4 +1,4 @@
-```php
+
 <?php
 // data_guru.php
 include 'includes/cek_session.php';
@@ -42,15 +42,17 @@ if (!$hasil) {
 
             <h1>Data Guru</h1>
 
-            <p>S
-                <a href="dashboard.php" class="btn btn-secondary">
+            <p>
+                Selamat datang di halaman Data Guru
+                
+            </p>
+            <a href="dashboard.php" class="btn btn-secondary">
                     Kembali ke Dashboard
                 </a>
 
                 <a href="tambah_guru.php" class="btn btn-primary">
                     Tambah Guru
                 </a>
-            </p>
 
             <!-- TABEL GURU -->
             <div class="table-responsive">

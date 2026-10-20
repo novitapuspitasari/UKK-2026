@@ -42,6 +42,8 @@ if (!$hasil) {
             <h1>Data Siswa</h1>
 
             <p>
+                Selamat datang di halaman Data Siswa
+            </p>
                 <a href="dashboard.php" class="btn btn-secondary">
                     Kembali ke Dashboard
                 </a>
@@ -49,7 +51,6 @@ if (!$hasil) {
                 <a href="tambah_siswa.php" class="btn btn-primary">
                     Tambah Siswa
                 </a>
-            </p>
 
             <!-- TABEL SISWA -->
             <div class="table-responsive">

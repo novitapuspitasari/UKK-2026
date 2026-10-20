@@ -75,7 +75,7 @@
         <main class="col-md-9 col-lg-10 p-4">
             <h2>Dashboard</h2>
             <p>
-                Selamat datang di halaman dashboard.
+                Selamat datang di halaman dashboard
             </p>
             <div class="row">
                 <!-- CARD DATA SISWA -->

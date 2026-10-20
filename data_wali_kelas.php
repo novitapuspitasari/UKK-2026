@@ -50,7 +50,8 @@ if (!$hasil) {
 
             <h1>Data Wali Kelas</h1>
 
-            <p>Selamat datang di halaman Penempatan Siswa
+            <p>
+                Selamat datang di halaman Data Wali Kelas
             </p>
             <a href="dashboard.php" class="btn btn-secondary">
                     Kembali ke Dashboard

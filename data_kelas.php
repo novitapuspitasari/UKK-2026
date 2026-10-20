@@ -1,4 +1,4 @@
-```php
+
 <?php
 // data_kelas.php
 include 'includes/cek_session.php';
@@ -43,6 +43,8 @@ if (!$hasil) {
             <h1>Data Kelas</h1>
 
             <p>
+                Selamat datang di halaman Data kelas
+</p>
                 <a href="dashboard.php" class="btn btn-secondary">
                     Kembali ke Dashboard
                 </a>
@@ -50,7 +52,6 @@ if (!$hasil) {
                 <a href="tambah_kelas.php" class="btn btn-primary">
                     Tambah Kelas
                 </a>
-            </p>
 
             <!-- TABEL KELAS -->
             <div class="table-responsive">

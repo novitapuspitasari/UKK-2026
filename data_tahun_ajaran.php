@@ -1,4 +1,4 @@
-```php
+
 <?php
 // data_tahun_ajaran.php
 include 'includes/cek_session.php';
@@ -42,7 +42,7 @@ if (!$hasil) {
             <h1>Data Tahun Ajaran</h1>
 
             <p>
-                
+                Selamat datang di halaman Data Tahun Ajaran
             </p>
             <a href="dashboard.php" class="btn btn-secondary">
                     Kembali ke Dashboard
