@@ -23,7 +23,7 @@ if (mysqli_query($koneksi, $sql)) {
 
 } else {
 
-    echo "Gagal menambahkan data siswa: " . mysqli_error($koneksi);
+    echo "Gagal menambahkan kelola siswa: " . mysqli_error($koneksi);
 
 }
 ?>

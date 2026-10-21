@@ -1,6 +1,6 @@
 
 <?php
-// data_siswa.php
+// kelola_siswa.php
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
@@ -17,7 +17,7 @@ if (!$hasil) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Data Siswa - Sistem Pelanggaran Siswa</title>
+    <title>Kelola Siswa - Sistem Pelanggaran Siswa</title>
 
     <!-- Bootstrap 4.6.2 -->
     <link rel="stylesheet"
@@ -39,10 +39,10 @@ if (!$hasil) {
         <!-- KONTEN -->
         <main class="col-md-9 col-lg-10 p-4">
 
-            <h1>Data Siswa</h1>
+            <h1>Kelola Siswa</h1>
 
             <p>
-                Selamat datang di halaman Data Siswa
+                Selamat datang di halaman Kelola Siswa
             </p>
                 <a href="dashboard.php" class="btn btn-secondary">
                     Kembali ke Dashboard

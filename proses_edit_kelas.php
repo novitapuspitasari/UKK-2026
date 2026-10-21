@@ -24,7 +24,7 @@ if (mysqli_query($koneksi, $sql)) {
 
 } else {
 
-    echo "Gagal mengubah data kelas: " . mysqli_error($koneksi);
+    echo "Gagal mengubah kelola kelas: " . mysqli_error($koneksi);
 
 }
 ?>

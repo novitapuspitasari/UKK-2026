@@ -21,7 +21,7 @@ if (mysqli_query($koneksi, $sql)) {
 
 } else {
 
-    echo "Gagal menambahkan data tahun ajaran: "
+    echo "Gagal menambahkan kelola tahun ajaran: "
          . mysqli_error($koneksi);
 
 }

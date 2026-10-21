@@ -15,12 +15,12 @@ $sql = "INSERT INTO t_kelas
 
 if (mysqli_query($koneksi, $sql)) {
 
-    header("Location: data_kelas.php");
+    header("Location: kelola_kelas.php");
     exit;
 
 } else {
 
-    echo "Gagal menambahkan data kelas: " . mysqli_error($koneksi);
+    echo "Gagal menambahkan kelola kelas: " . mysqli_error($koneksi);
 
 }
 ?>

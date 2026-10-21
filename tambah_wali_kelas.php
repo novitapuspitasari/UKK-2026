@@ -106,7 +106,7 @@ $guru = mysqli_query(
     </table>
 </form>
 
-<p><a href="data_wali_kelas.php">Kembali</a></p>
+<p><a href="kelola_wali_kelas.php">Kembali</a></p>
 
 </body>
 </html>

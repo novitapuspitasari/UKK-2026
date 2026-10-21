@@ -16,12 +16,12 @@ $sql = "INSERT INTO t_pelanggaran_kategori
 
 if (mysqli_query($koneksi, $sql)) {
 
-    header("Location: kategori_pelanggaran.php");
+    header("Location: pelanggaran_kategori.php");
     exit;
 
 } else {
 
-    echo "Gagal menambahkan data kategori pelanggaran: "
+    echo "Gagal menambahkan pelanggaran_kategori: "
          . mysqli_error($koneksi);
 
 }

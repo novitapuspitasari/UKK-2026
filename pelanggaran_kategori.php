@@ -13,7 +13,7 @@ $hasil = mysqli_query($koneksi, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Kategori Pelanggaran</title>
+    <title>Pelanggaran Kategori</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -31,8 +31,8 @@ $hasil = mysqli_query($koneksi, $sql);
         <?php include 'layout/sidebar.php'; ?>
 
         <main class="col-md-9 col-lg-10 p-4">
-            <h2>Data Kategori Pelanggaran</h2>
-            <p>Selamat datang di halaman Kategori Pelanggaran.</p>
+            <h2>Pelanggaran Kategori</h2>
+            <p>Selamat datang di halaman Pelanggaran Kategori</p>
 
             <div class="mb-3">
                 <a href="dashboard.php" class="btn btn-secondary">

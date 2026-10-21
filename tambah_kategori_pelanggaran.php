@@ -1,6 +1,6 @@
 
 <?php
-// tambah_kategori_pelanggaran.php
+// tambah_pelanggaran_kategori.php
 
 include 'includes/cek_session.php';
 ?>
@@ -9,14 +9,14 @@ include 'includes/cek_session.php';
 <html>
 
 <head>
-    <title>Tambah Kategori Pelanggaran</title>
+    <title>Tambah Pelanggaran Kategori</title>
 </head>
 
 <body>
 
-    <h1>Tambah Kategori Pelanggaran</h1>
+    <h1>Tambah Pelanggaran Kategori</h1>
 
-    <form action="proses_tambah_kategori_pelanggaran.php" method="POST">
+    <form action="proses_tambah_pelanggaran_kategori.php" method="POST">
 
         <table>
 
@@ -64,7 +64,7 @@ include 'includes/cek_session.php';
     </form>
 
     <p>
-        <a href=" kategori_pelanggaran.php">Kembali</a>
+        <a href=" pelanggaran_kategori.php">Kembali</a>
     </p>
 
 </body>

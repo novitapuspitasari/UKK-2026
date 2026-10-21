@@ -21,7 +21,7 @@ if ($hasil) {
     header("Location: kelola_guru.php");
     exit;
 } else {
-    echo "Gagal menambahkan data guru: "
+    echo "Gagal menambahkan kelola guru: "
          . mysqli_error($koneksi);
 }
 ?>

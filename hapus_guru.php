@@ -13,7 +13,7 @@ if ($id === '' || !ctype_digit((string) $id)) {
     exit;
 }
 
-// Pastikan data guru tersedia
+// Pastikan kelola guru tersedia
 $stmt = mysqli_prepare(
     $koneksi,
     "SELECT id FROM t_guru WHERE id = ?"
@@ -23,15 +23,15 @@ mysqli_stmt_bind_param($stmt, "i", $id);
 mysqli_stmt_execute($stmt);
 
 $hasil = mysqli_stmt_get_result($stmt);
-$data = mysqli_fetch_assoc($hasil);
+$kelola = mysqli_fetch_assoc($hasil);
 mysqli_stmt_close($stmt);
 
-if (!$data) {
+if (!$kelola) {
     header('Location: kelola_guru.php');
     exit;
 }
 
-// Hapus data guru
+// Hapus kelola guru
 $stmt = mysqli_prepare(
     $koneksi,
     "DELETE FROM t_guru WHERE id = ?"
@@ -48,5 +48,5 @@ if (mysqli_stmt_execute($stmt)) {
 
 mysqli_stmt_close($stmt);
 
-die('Gagal menghapus data guru.');
+die('Gagal menghapus kelola guru.');
 ?>

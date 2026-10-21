@@ -13,7 +13,6 @@ $alamat = $_POST['alamat'];
 $status_aktif = $_POST['status_aktif'];
 
 $sql = "UPDATE t_siswa SET
-        id ='$id',
         nis = '$nis',
         nisn = '$nisn',
         nama = '$nama',

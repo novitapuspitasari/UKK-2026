@@ -16,7 +16,7 @@ $hasil = mysqli_stmt_get_result($stmt);
 $data = mysqli_fetch_assoc($hasil);
 
 if (!$data) {
-    exit('Data wali kelas tidak ditemukan.');
+    exit('Kelola wali kelas tidak ditemukan.');
 }
 
 $tahun = mysqli_query(
@@ -142,7 +142,7 @@ $guru = mysqli_query(
     </table>
 </form>
 
-<p><a href="data_wali_kelas.php">Kembali</a></p>
+<p><a href="kelola_wali_kelas.php">Kembali</a></p>
 
 </body>
 </html>

@@ -13,7 +13,7 @@ if ($id === '' || !ctype_digit((string) $id)) {
     exit;
 }
 
-// Pastikan data tahun ajaran tersedia
+// Pastikan kelola tahun ajaran tersedia
 $stmt = mysqli_prepare(
     $koneksi,
     "SELECT id FROM t_tahun_ajaran WHERE id = ?"
@@ -23,15 +23,15 @@ mysqli_stmt_bind_param($stmt, "i", $id);
 mysqli_stmt_execute($stmt);
 
 $hasil = mysqli_stmt_get_result($stmt);
-$data = mysqli_fetch_assoc($hasil);
+$kelola = mysqli_fetch_assoc($hasil);
 mysqli_stmt_close($stmt);
 
-if (!$data) {
+if (!$kelola) {
     header('Location: kelola_tahun_ajaran.php');
     exit;
 }
 
-// Hapus data tahun ajaran
+// Hapus kelola tahun ajaran
 $stmt = mysqli_prepare(
     $koneksi,
     "DELETE FROM t_tahun_ajaran WHERE id = ?"
@@ -48,5 +48,5 @@ if (mysqli_stmt_execute($stmt)) {
 
 mysqli_stmt_close($stmt);
 
-die('Gagal menghapus data tahun ajaran.');
+die('Gagal menghapus kelola tahun ajaran.');
 ?>

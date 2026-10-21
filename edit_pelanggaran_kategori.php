@@ -12,7 +12,7 @@ $hasil = mysqli_query($koneksi, $sql);
 $data = mysqli_fetch_assoc($hasil);
 
 if (!$data) {
-    die("Data kategori pelanggaran tidak ditemukan.");
+    die(" pelanggaran kategori tidak ditemukan.");
 }
 ?>
 
@@ -20,14 +20,14 @@ if (!$data) {
 <html>
 
 <head>
-    <title>Edit Kategori Pelanggaran</title>
+    <title>Edit Pelanggaran Kategori</title>
 </head>
 
 <body>
 
-    <h1>Edit Kategori Pelanggaran</h1>
+    <h1>Edit Pelanggaran Kategori</h1>
 
-    <form action="proses_edit_kategori_pelanggaran.php" method="POST">
+    <form action="proses_edit_pelanggaran_kategori.php" method="POST">
 
         <input type="hidden" name="id"
                value="<?php echo $data['id']; ?>">
@@ -93,8 +93,8 @@ if (!$data) {
     </form>
 
     <p>
-        <a href="kategori_pelanggaran.php">
-            Kembali ke Data Kategori Pelanggaran
+        <a href="pelanggaran_kategori.php">
+            Kembali ke Pelanggaran Kategori
         </a>
     </p>
 

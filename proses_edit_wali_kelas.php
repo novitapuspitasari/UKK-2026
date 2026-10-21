@@ -40,10 +40,10 @@ mysqli_stmt_bind_param(
 );
 
 if (mysqli_stmt_execute($stmt)) {
-    header("Location: data_wali_kelas.php");
+    header("Location: kelola_wali_kelas.php");
     exit;
 } else {
-    echo "Gagal mengubah data wali kelas: "
+    echo "Gagal mengubah kelola wali kelas: "
         . mysqli_stmt_error($stmt);
 }
 ?>

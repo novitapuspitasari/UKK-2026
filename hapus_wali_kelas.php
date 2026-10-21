@@ -5,7 +5,7 @@ include 'config/koneksi.php';
 
 $id = (int) ($_GET['id'] ?? 0);
 
-// Ambil data sebelum dihapus
+// Ambil kelola sebelum dihapus
 $sql = "SELECT
             w.id,
             w.kelas_id,
@@ -18,13 +18,13 @@ $stmt = mysqli_prepare($koneksi, $sql);
 mysqli_stmt_bind_param($stmt, "i", $id);
 mysqli_stmt_execute($stmt);
 
-$data = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+$kelola = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
-if (!$data) {
-    exit('Data wali kelas tidak ditemukan.');
+if (!$kelola) {
+    exit('kelola wali kelas tidak ditemukan.');
 }
 
-// Hapus data
+// Hapus kelola
 $hapus = mysqli_prepare(
     $koneksi,
     "DELETE FROM t_wali_kelas WHERE id = ?"
@@ -34,7 +34,7 @@ mysqli_stmt_bind_param($hapus, "i", $id);
 if (mysqli_stmt_execute($hapus)) {
     $id_user = $_SESSION['id_user'] ?? null;
     $waktu = date('Y-m-d H:i:s');
-    $nama_kelas = $data['nama_kelas'] ?? 'Tidak diketahui';
+    $nama_kelas = $kelola['nama_kelas'] ?? 'Tidak diketahui';
     $aktivitas = "hapus wali kelas untuk kelas: " . $nama_kelas;
 
     if ($id_user !== null) {
@@ -55,9 +55,9 @@ if (mysqli_stmt_execute($hapus)) {
         mysqli_stmt_execute($log);
     }
 
-    header('Location: data_wali_kelas.php');
+    header('Location: kelola_wali_kelas.php');
     exit;
 } else {
-    echo "Gagal menghapus wali kelas: " . mysqli_error($koneksi);
+    echo "Gagal menghapus kelola wali kelas: " . mysqli_error($koneksi);
 }
 ?>

@@ -19,7 +19,7 @@ $sql = "UPDATE t_tahun_ajaran SET
 
 if (mysqli_query($koneksi, $sql)) {
 
-    header("Location: kelola_kelas.php");
+    header("Location: kelola_tahun_ajaran.php");
     exit;
 
 } else {

@@ -19,37 +19,37 @@ if ($_SESSION['role'] === "admin") {
             </li>
 
             <li class="nav-item mb-2">
-                <a href="data_siswa.php"
-                   class="nav-link <?= ($current_page == 'data_siswa.php') ? 'active' : 'text-white' ?>">
-                    Data Siswa
+                <a href="kelola_siswa.php"
+                   class="nav-link <?= ($current_page == 'kelola_siswa.php') ? 'active' : 'text-white' ?>">
+                    Kelola Siswa
                 </a>
             </li>
 
             <li class="nav-item mb-2">
-                <a href="data_guru.php"
-                   class="nav-link <?= ($current_page == 'data_guru.php') ? 'active' : 'text-white' ?>">
-                    Data Guru
+                <a href="kelola_guru.php"
+                   class="nav-link <?= ($current_page == 'kelola_guru.php') ? 'active' : 'text-white' ?>">
+                    Kelola Guru
                 </a>
             </li>
 
             <li class="nav-item mb-2">
-                <a href="data_kelas.php"
-                   class="nav-link <?= ($current_page == 'data_kelas.php') ? 'active' : 'text-white' ?>">
-                    Data Kelas
+                <a href="kelola_kelas.php"
+                   class="nav-link <?= ($current_page == 'kelola_kelas.php') ? 'active' : 'text-white' ?>">
+                    Kelola Kelas
                 </a>
             </li>
 
             <li class="nav-item mb-2">
-                <a href="data_tahun_ajaran.php"
-                   class="nav-link <?= ($current_page == 'data_tahun_ajaran.php') ? 'active' : 'text-white' ?>">
-                    Data Tahun Ajaran
+                <a href="kelola_tahun_ajaran.php"
+                   class="nav-link <?= ($current_page == 'kelola_tahun_ajaran.php') ? 'active' : 'text-white' ?>">
+                    Kelola Tahun Ajaran
                 </a>
             </li>
 
             <li class="nav-item mb-2">
-                <a href="data_wali_kelas.php"
-                   class="nav-link <?= ($current_page == 'data_wali_kelas.php') ? 'active' : 'text-white' ?>">
-                    Data Wali Kelas
+                <a href="kelola_wali_kelas.php"
+                   class="nav-link <?= ($current_page == 'kelola_wali_kelas.php') ? 'active' : 'text-white' ?>">
+                    Kelola Wali Kelas
                 </a>
             </li>
 
@@ -61,9 +61,9 @@ if ($_SESSION['role'] === "admin") {
             </li>
 
             <li class="nav-item mb-2">
-                <a href="kategori_pelanggaran.php"
-                   class="nav-link <?= ($current_page == 'kategori_pelanggaran.php') ? 'active' : 'text-white' ?>">
-                    Kategori Pelanggaran
+                <a href="pelanggaran_kategori.php"
+                   class="nav-link <?= ($current_page == 'pelanggaran_kategori.php') ? 'active' : 'text-white' ?>">
+                    Pelanggaran Kategori
                 </a>
             </li>
 

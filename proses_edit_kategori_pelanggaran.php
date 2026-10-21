@@ -19,12 +19,12 @@ $sql = "UPDATE t_pelanggaran_kategori SET
 
 if (mysqli_query($koneksi, $sql)) {
 
-    header("Location: kategori_pelanggaran.php");
+    header("Location: pelanggaran_kategori.php");
     exit;
 
 } else {
 
-    echo "Gagal mengubah data kategori pelanggaran: "
+    echo "Gagal mengubah data pelanggaran kategori: "
          . mysqli_error($koneksi);
 
 }

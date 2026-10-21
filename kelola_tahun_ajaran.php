@@ -1,6 +1,6 @@
 
 <?php
-// data_tahun_ajaran.php
+// kelola_tahun_ajaran.php
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
@@ -39,18 +39,18 @@ if (!$hasil) {
         <!-- KONTEN -->
         <main class="col-md-9 col-lg-10 p-4">
 
-            <h1>Data Tahun Ajaran</h1>
+            <h1>Kelola Tahun Ajaran</h1>
 
             <p>
-                Selamat datang di halaman Data Tahun Ajaran
+                Selamat datang di halaman Kelola Tahun Ajaran
             </p>
-            <a href="dashboard.php" class="btn btn-secondary">
+                <a href="dashboard.php" class="btn btn-secondary">
                     Kembali ke Dashboard
                 </a>
 
                 <a href="tambah_tahun_ajaran.php" class="btn btn-primary">
-                    Tambah Tahun Ajaran
-                </a> 
+                    Tambah Kelola Tahun Ajaran
+                </a>
 
             <!-- TABEL TAHUN AJARAN -->
             <div class="table-responsive">
@@ -112,7 +112,7 @@ if (!$hasil) {
                                     Edit
                                 </a>
 
-                                <a href="hapus_kelola_tahun_ajaran.php?id=<?php
+                                <a href="hapus_tahun_ajaran.php?id=<?php
                                     echo urlencode($row['id']);
                                 ?>"
                                    class="btn btn-danger btn-sm mb-1"
