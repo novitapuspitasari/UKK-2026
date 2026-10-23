@@ -24,7 +24,7 @@ if (!$hasil) {
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-    <!-- CSS DataTables -->
+    <!-- DataTables Bootstrap 4 -->
     <link rel="stylesheet"
           href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
 </head>
@@ -34,17 +34,14 @@ if (!$hasil) {
 <div class="container-fluid">
     <div class="row">
 
-        <!-- SIDEBAR -->
         <?php include 'layout/sidebar.php'; ?>
 
-        <!-- KONTEN -->
         <main class="col-md-9 col-lg-10 p-4">
 
             <h1>Kelola Guru</h1>
+            <p>Selamat datang di halaman Kelola Guru.</p>
 
-            <p>
-                Selamat datang di halaman Kelola Guru
-            </p>
+            <div class="mb-3">
                 <a href="dashboard.php" class="btn btn-secondary">
                     Kembali ke Dashboard
                 </a>
@@ -52,6 +49,7 @@ if (!$hasil) {
                 <a href="tambah_guru.php" class="btn btn-primary">
                     Tambah Guru
                 </a>
+            </div>
 
             <!-- TABEL GURU -->
             <div class="table-responsive">
@@ -60,7 +58,7 @@ if (!$hasil) {
 
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>NIP</th>
                             <th>Nama</th>
                             <th>Email</th>
@@ -74,48 +72,32 @@ if (!$hasil) {
                     <tbody>
                         <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
                         <tr>
-                            <td>
-                                <?php echo htmlspecialchars($row['id']); ?>
-                            </td>
+                            <!-- Nomor urut otomatis -->
+                            <td></td>
+
+                            <!-- ID asli database -->
+                            <td><?= htmlspecialchars($row['nip'] ?? ''); ?></td>
+                            <td><?= htmlspecialchars($row['nama'] ?? ''); ?></td>
+                            <td><?= htmlspecialchars($row['email'] ?? ''); ?></td>
 
                             <td>
-                                <?php echo htmlspecialchars($row['nip']); ?>
+                                <?php if ($row['status_aktif'] == 1) { ?>
+                                    <span class="badge badge-success">Aktif</span>
+                                <?php } else { ?>
+                                    <span class="badge badge-secondary">Tidak Aktif</span>
+                                <?php } ?>
                             </td>
 
-                            <td>
-                                <?php echo htmlspecialchars($row['nama']); ?>
-                            </td>
+                            <td><?= htmlspecialchars($row['created_at'] ?? ''); ?></td>
+                            <td><?= htmlspecialchars($row['updated_at'] ?? ''); ?></td>
 
                             <td>
-                                <?php echo htmlspecialchars($row['email']); ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo ($row['status_aktif'] == 1)
-                                    ? 'Aktif'
-                                    : 'Tidak Aktif';
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php echo htmlspecialchars($row['created_at'] ?? ''); ?>
-                            </td>
-
-                            <td>
-                                <?php echo htmlspecialchars($row['updated_at'] ?? ''); ?>
-                            </td>
-
-                            <td>
-                                <a href="edit_guru.php?id=<?php
-                                    echo urlencode($row['id']);
-                                ?>" class="btn btn-info btn-sm mb-1">
+                                <a href="edit_guru.php?id=<?= urlencode($row['id']); ?>"
+                                   class="btn btn-info btn-sm mb-1">
                                     Edit
                                 </a>
 
-                                <a href="hapus_guru.php?id=<?php
-                                    echo urlencode($row['id']);
-                                ?>"
+                                <a href="hapus_guru.php?id=<?= urlencode($row['id']); ?>"
                                    class="btn btn-danger btn-sm mb-1"
                                    onclick="return confirm('Yakin ingin menghapus data guru ini?');">
                                     Hapus
@@ -132,17 +114,16 @@ if (!$hasil) {
     </div>
 </div>
 
-<!-- jQuery penuh -->
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- Bootstrap 4 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- JavaScript DataTables -->
+<!-- DataTables -->
 <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- Konfigurasi DataTables -->
 <script>
 $(document).ready(function () {
     $('#tabelGuru').DataTable({
@@ -150,6 +131,10 @@ $(document).ready(function () {
         lengthMenu: [5, 10, 25, 50, 100],
         ordering: true,
         searching: true,
+
+        // Urutan awal berdasarkan nama guru
+        order: [[3, 'asc']],
+
         language: {
             lengthMenu: "Tampilkan _MENU_ data",
             zeroRecords: "Data guru tidak ditemukan",
@@ -164,6 +149,23 @@ $(document).ready(function () {
                 next: "Selanjutnya",
                 previous: "Sebelumnya"
             }
+        },
+
+        // Kolom No tidak ikut diurutkan atau dicari
+        columnDefs: [{
+            targets: 0,
+            orderable: false,
+            searchable: false
+        }],
+
+        // Nomor menyesuaikan data yang sedang ditampilkan
+        drawCallback: function () {
+            const api = this.api();
+            const info = api.page.info();
+
+            api.column(0, { page: 'current' }).nodes().each(function (cell, i) {
+                cell.innerHTML = info.start + i + 1;
+            });
         }
     });
 });

@@ -11,6 +11,7 @@ if (!$hasil) {
     die("Query gagal: " . mysqli_error($koneksi));
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -19,11 +20,9 @@ if (!$hasil) {
 
     <title>Kelola Tahun Ajaran - Sistem Pelanggaran Siswa</title>
 
-    <!-- Bootstrap 4.6.2 -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-    <!-- CSS DataTables -->
     <link rel="stylesheet"
           href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
 </head>
@@ -33,33 +32,29 @@ if (!$hasil) {
 <div class="container-fluid">
     <div class="row">
 
-        <!-- SIDEBAR -->
         <?php include 'layout/sidebar.php'; ?>
 
-        <!-- KONTEN -->
         <main class="col-md-9 col-lg-10 p-4">
 
             <h1>Kelola Tahun Ajaran</h1>
 
-            <p>
-                Selamat datang di halaman Kelola Tahun Ajaran
-            </p>
-                <a href="dashboard.php" class="btn btn-secondary">
-                    Kembali ke Dashboard
-                </a>
+            <p>Selamat datang di halaman Kelola Tahun Ajaran</p>
 
-                <a href="tambah_tahun_ajaran.php" class="btn btn-primary">
-                    Tambah Kelola Tahun Ajaran
-                </a>
+            <a href="dashboard.php" class="btn btn-secondary">
+                Kembali ke Dashboard
+            </a>
 
-            <!-- TABEL TAHUN AJARAN -->
-            <div class="table-responsive">
+            <a href="tambah_tahun_ajaran.php" class="btn btn-primary">
+                Tambah Tahun Ajaran
+            </a>
+
+            <div class="table-responsive mt-3">
                 <table id="tabelTahunAjaran"
                        class="table table-bordered table-striped table-hover">
 
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
@@ -73,9 +68,7 @@ if (!$hasil) {
                     <tbody>
                         <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
                         <tr>
-                            <td>
-                                <?php echo htmlspecialchars($row['id']); ?>
-                            </td>
+                            <td></td>
 
                             <td>
                                 <?php echo htmlspecialchars($row['nama']); ?>
@@ -131,17 +124,11 @@ if (!$hasil) {
     </div>
 </div>
 
-<!-- jQuery penuh -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<!-- Bootstrap 4 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- JavaScript DataTables -->
 <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- Pengaturan DataTables -->
 <script>
 $(document).ready(function () {
     $('#tabelTahunAjaran').DataTable({
@@ -149,6 +136,29 @@ $(document).ready(function () {
         lengthMenu: [5, 10, 25, 50, 100],
         ordering: true,
         searching: true,
+
+        // Kolom No tidak ikut proses pengurutan atau pencarian
+        columnDefs: [
+            {
+                targets: 0,
+                orderable: false,
+                searchable: false
+            }
+        ],
+
+        // Urutkan berdasarkan Nama
+        order: [[2, 'asc']],
+
+        // Nomor otomatis mengikuti urutan tabel dan halaman
+        drawCallback: function () {
+            const api = this.api();
+            const info = api.page.info();
+
+            api.column(0, { page: 'current' }).nodes().each(function (cell, i) {
+                cell.innerHTML = info.start + i + 1;
+            });
+        },
+
         language: {
             lengthMenu: "Tampilkan _MENU_ data",
             zeroRecords: "Data tahun ajaran tidak ditemukan",

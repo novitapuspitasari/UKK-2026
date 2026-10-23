@@ -20,11 +20,9 @@ if (!$hasil) {
 
     <title>Kelola Kelas - Sistem Pelanggaran Siswa</title>
 
-    <!-- Bootstrap 4.6.2 -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-    <!-- CSS DataTables -->
     <link rel="stylesheet"
           href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
 </head>
@@ -34,33 +32,29 @@ if (!$hasil) {
 <div class="container-fluid">
     <div class="row">
 
-        <!-- SIDEBAR -->
         <?php include 'layout/sidebar.php'; ?>
 
-        <!-- KONTEN -->
         <main class="col-md-9 col-lg-10 p-4">
 
             <h1>Kelola Kelas</h1>
 
-            <p>
-                Selamat datang di halaman Kelola Kelas
-            </p>
-                <a href="dashboard.php" class="btn btn-secondary">
-                    Kembali ke Dashboard
-                </a>
+            <p>Selamat datang di halaman Kelola Kelas</p>
 
-                <a href="tambah_kelas.php" class="btn btn-primary">
-                    Tambah Kelas
-                </a>
+            <a href="dashboard.php" class="btn btn-secondary">
+                Kembali ke Dashboard
+            </a>
 
-            <!-- TABEL KELAS -->
-            <div class="table-responsive">
+            <a href="tambah_kelas.php" class="btn btn-primary">
+                Tambah Kelas
+            </a>
+
+            <div class="table-responsive mt-3">
                 <table id="tabelKelas"
                        class="table table-bordered table-striped table-hover">
 
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Nama Kelas</th>
                             <th>Tingkat</th>
                             <th>Jurusan</th>
@@ -74,10 +68,7 @@ if (!$hasil) {
                     <tbody>
                         <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
                         <tr>
-                            <td>
-                                <?php echo htmlspecialchars($row['id']); ?>
-                            </td>
-
+                            <td></td>
                             <td>
                                 <?php echo htmlspecialchars($row['nama']); ?>
                             </td>
@@ -132,17 +123,13 @@ if (!$hasil) {
     </div>
 </div>
 
-<!-- jQuery penuh, diperlukan oleh DataTables -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- Bootstrap 4 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- JavaScript DataTables -->
 <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- Pengaturan DataTables -->
 <script>
 $(document).ready(function () {
     $('#tabelKelas').DataTable({
@@ -150,6 +137,28 @@ $(document).ready(function () {
         lengthMenu: [5, 10, 25, 50, 100],
         ordering: true,
         searching: true,
+
+        // Nomor urut otomatis
+        columnDefs: [
+            {
+                targets: 0,
+                orderable: false,
+                searchable: false
+            }
+        ],
+
+        // Urutkan berdasarkan Nama Kelas
+        order: [[2, 'asc']],
+
+        drawCallback: function () {
+            const api = this.api();
+            const info = api.page.info();
+
+            api.column(0, { page: 'current' }).nodes().each(function (cell, i) {
+                cell.innerHTML = info.start + i + 1;
+            });
+        },
+
         language: {
             lengthMenu: "Tampilkan _MENU_ data",
             zeroRecords: "Data kelas tidak ditemukan",

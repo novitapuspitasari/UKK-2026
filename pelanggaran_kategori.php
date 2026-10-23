@@ -89,8 +89,9 @@ $hasil = mysqli_query($koneksi, $sql);
                             </td>
 
                             <td>
-                                <a href="edit_kategori_pelanggaran.php?id=<?= (int) $row['id']; ?>"
-                                   class="btn btn-info btn-sm mb-1">
+                                <a href="edit_kelas.php?id=<?php
+                                    echo urlencode($row['id']);
+                                ?>" class="btn btn-info btn-sm mb-1">
                                     Edit
                                 </a>
 
