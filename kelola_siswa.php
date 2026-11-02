@@ -41,13 +41,14 @@ if (!$hasil) {
             <h1>Kelola Siswa</h1>
             <p>Selamat datang di halaman Kelola Siswa.</p>
 
-            <div class="mb-3">
-                <a href="dashboard.php" class="btn btn-secondary">
+             <div class="mb-3">
+                <a href="dashboard.php" class="btn btn-primary">
                     Kembali ke Dashboard
                 </a>
 
-                <a href="tambah_siswa.php" class="btn btn-primary">
-                    Tambah Siswa
+                <a href="tambah_jenis_pelanggaran.php"
+                   class="btn btn-success">
+                    + Tambah Jenis Pelanggaran
                 </a>
             </div>
 

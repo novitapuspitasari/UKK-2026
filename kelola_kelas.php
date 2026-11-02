@@ -40,14 +40,17 @@ if (!$hasil) {
 
             <p>Selamat datang di halaman Kelola Kelas</p>
 
-            <a href="dashboard.php" class="btn btn-secondary">
-                Kembali ke Dashboard
-            </a>
+             <div class="mb-3">
+                <a href="dashboard.php" class="btn btn-primary">
+                    Kembali ke Dashboard
+                </a>
 
-            <a href="tambah_kelas.php" class="btn btn-primary">
-                Tambah Kelas
-            </a>
-
+                <a href="tambah_jenis_pelanggaran.php"
+                   class="btn btn-success">
+                    + Tambah Jenis Pelanggaran
+                </a>
+            </div>
+            
             <div class="table-responsive mt-3">
                 <table id="tabelKelas"
                        class="table table-bordered table-striped table-hover">

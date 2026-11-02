@@ -94,9 +94,11 @@ if (!$siswa || !$tahun || !$kelas || !$hasil) {
             </p>
 
             <p>
-                <a href="dashboard.php" class="btn btn-secondary">
+                 <div class="mb-3">
+                <a href="dashboard.php" class="btn btn-primary">
                     Kembali ke Dashboard
                 </a>
+
             </p>
 
             <!-- PESAN SUKSES -->

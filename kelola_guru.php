@@ -42,12 +42,13 @@ if (!$hasil) {
             <p>Selamat datang di halaman Kelola Guru.</p>
 
             <div class="mb-3">
-                <a href="dashboard.php" class="btn btn-secondary">
+                <a href="dashboard.php" class="btn btn-primary">
                     Kembali ke Dashboard
                 </a>
 
-                <a href="tambah_guru.php" class="btn btn-primary">
-                    Tambah Guru
+                <a href="tambah_jenis_pelanggaran.php"
+                   class="btn btn-success">
+                    + Tambah Jenis Pelanggaran
                 </a>
             </div>
 

@@ -1,6 +1,6 @@
 
 <?php
-// data_pelanggaran_kategori.php
+// pelanggaran_kategori.php
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
@@ -34,13 +34,14 @@ $hasil = mysqli_query($koneksi, $sql);
             <h2>Pelanggaran Kategori</h2>
             <p>Selamat datang di halaman Pelanggaran Kategori</p>
 
-            <div class="mb-3">
-                <a href="dashboard.php" class="btn btn-secondary">
+             <div class="mb-3">
+                <a href="dashboard.php" class="btn btn-primary">
                     Kembali ke Dashboard
                 </a>
-                <a href="tambah_kategori_pelanggaran.php"
-                   class="btn btn-primary">
-                    Tambah Kategori Pelanggaran
+
+                <a href="tambah_jenis_pelanggaran.php"
+                   class="btn btn-success">
+                    + Tambah Jenis Pelanggaran
                 </a>
             </div>
 
@@ -95,9 +96,9 @@ $hasil = mysqli_query($koneksi, $sql);
                                     Edit
                                 </a>
 
-                                <a href="hapus_kategori_pelanggaran.php?id=<?= (int) $row['id']; ?>"
+                                <a href="hapus_pelanggaran_kategori.php?id=<?= (int) $row['id']; ?>"
                                    class="btn btn-danger btn-sm mb-1"
-                                   onclick="return confirm('Yakin ingin menghapus kategori pelanggaran ini?');">
+                                   onclick="return confirm('Yakin ingin menghapus pelanggaran kategori ini?');">
                                     Hapus
                                 </a>
                             </td>

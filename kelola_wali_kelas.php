@@ -50,7 +50,7 @@ if (!$hasil) {
 
             <!-- JUDUL -->
             <div class="mb-4">
-                <h1 class="text-primary font-weight-bold">
+                <h1 class="text font-bold">
                     Kelola Wali Kelas
                 </h1>
 
@@ -60,21 +60,19 @@ if (!$hasil) {
             </div>
 
             <!-- TOMBOL -->
-            <div class="mb-3">
-                <a href="dashboard.php" class="btn btn-secondary mr-2 mb-2">
+             <div class="mb-3">
+                <a href="dashboard.php" class="btn btn-primary">
                     Kembali ke Dashboard
                 </a>
 
-                <a href="tambah_wali_kelas.php" class="btn btn-primary mb-2">
-                    + Tambah Wali Kelas
+                <a href="tambah_jenis_pelanggaran.php"
+                   class="btn btn-success">
+                    + Tambah Jenis Pelanggaran
                 </a>
             </div>
 
             <!-- CARD TABEL -->
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Daftar Wali Kelas</h5>
-                </div>
+            
 
                 <div class="card-body">
 

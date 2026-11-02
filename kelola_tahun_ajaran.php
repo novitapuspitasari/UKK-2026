@@ -40,14 +40,17 @@ if (!$hasil) {
 
             <p>Selamat datang di halaman Kelola Tahun Ajaran</p>
 
-            <a href="dashboard.php" class="btn btn-secondary">
-                Kembali ke Dashboard
-            </a>
+             <div class="mb-3">
+                <a href="dashboard.php" class="btn btn-primary">
+                    Kembali ke Dashboard
+                </a>
 
-            <a href="tambah_tahun_ajaran.php" class="btn btn-primary">
-                Tambah Tahun Ajaran
-            </a>
-
+                <a href="tambah_jenis_pelanggaran.php"
+                   class="btn btn-success">
+                    + Tambah Jenis Pelanggaran
+                </a>
+            </div>
+            
             <div class="table-responsive mt-3">
                 <table id="tabelTahunAjaran"
                        class="table table-bordered table-striped table-hover">
