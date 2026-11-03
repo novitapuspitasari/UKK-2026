@@ -39,9 +39,9 @@ $hasil = mysqli_query($koneksi, $sql);
                     Kembali ke Dashboard
                 </a>
 
-                <a href="tambah_jenis_pelanggaran.php"
+                <a href="tambah_pelanggaran_kategori.php"
                    class="btn btn-success">
-                    + Tambah Jenis Pelanggaran
+                    + Tambah Pelanggaran Kategori
                 </a>
             </div>
 

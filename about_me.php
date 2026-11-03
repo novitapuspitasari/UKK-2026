@@ -4,7 +4,7 @@ session_start();
 include "config/koneksi.php";
 
 $nama = "Novita Puspitasari";
-$kelas = "XI RPL";
+$kelas = "XII RPL";
 $sekolah = "SMK Muhammadiyah Tasikmalaya";
 $jurusan = "Rekayasa Perangkat Lunak";
 $hobi = "Mendengarkan Musik";
@@ -25,6 +25,13 @@ $cita_cita = "Psikologi";
 </head>
 
 <body class="bg-light">
+    <div class="container-fluid">
+    <div class="row">
+
+        <?php include 'layout/sidebar.php'; ?>
+
+        <main class="col-md-9 col-lg-10 p-4">
+
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">

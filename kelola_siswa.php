@@ -46,9 +46,9 @@ if (!$hasil) {
                     Kembali ke Dashboard
                 </a>
 
-                <a href="tambah_jenis_pelanggaran.php"
+                <a href="tambah_siswa.php"
                    class="btn btn-success">
-                    + Tambah Jenis Pelanggaran
+                    + Tambah Siswa
                 </a>
             </div>
 
