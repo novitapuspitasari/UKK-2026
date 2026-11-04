@@ -129,7 +129,7 @@ if (!$siswa || !$tahun || !$kelas || !$hasil) {
 
                 <div class="card-body">
                     <form
-                        action="proses_simpan_penempatan.php"
+                        action="proses_simpan_penempatan_siswa.php"
                         method="POST">
 
                         <div class="form-group mb-3">

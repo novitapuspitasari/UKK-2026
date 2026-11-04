@@ -58,7 +58,7 @@ if (!$hasil) {
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
+                            <th>Nama Tahun Ajaran</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                             <th>Status Aktif</th>
@@ -102,7 +102,7 @@ if (!$hasil) {
                             </td>
 
                             <td>
-                                <a href="edit_kelola_tahun_ajaran.php?id=<?php
+                                <a href="edit_tahun_ajaran.php?id=<?php
                                     echo urlencode($row['id']);
                                 ?>" class="btn btn-info btn-sm mb-1">
                                     Edit

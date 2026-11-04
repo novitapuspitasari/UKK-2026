@@ -3,125 +3,126 @@
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
+// Ambil ID siswa dari URL
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM t_siswa WHERE id = '$id'";
-$hasil = mysqli_query($koneksi, $sql);
-$data = mysqli_fetch_assoc($hasil);
+// Ambil data siswa dari database
+$data = mysqli_query($koneksi, "SELECT * FROM t_siswa WHERE id='$id'");
+$siswa = mysqli_fetch_assoc($data);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Siswa</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+<div class="container-fluid">
+    <div class="row">
 
-    <h1>Edit Siswa</h1>
+        <?php include 'layout/sidebar.php'; ?>
 
-    <form action="proses_edit_siswa.php" method="POST">
+        <main class="col-md-9 col-lg-10 p-4">
 
-        <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+            <h2>Edit Siswa</h2>
 
-        <table>
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    Form Edit Siswa
+                </div>
 
-            <tr>
-                <td>ID</td>
-                <td>:</td>
-                <td>
-                    <input type="text" name="id"
-                        value="<?php echo $data['id']; ?>" required>
-                </td>
-            </tr>
+                <div class="card-body">
 
-            <tr>
-                <td>NIS</td>
-                <td>:</td>
-                <td>
-                    <input type="text" name="nis"
-                        value="<?php echo $data['nis']; ?>" required>
-                </td>
-            </tr>
+                    <form action="proses_edit_siswa.php" method="POST">
 
-            <tr>
-                <td>NISN</td>
-                <td>:</td>
-                <td>
-                    <input type="text" name="nisn"
-                        value="<?php echo $data['nisn']; ?>" required>
-                </td>
-            </tr>
+                        <input type="hidden" name="id"
+                               value="<?= $siswa['id']; ?>">
 
-            <tr>
-                <td>Nama</td>
-                <td>:</td>
-                <td>
-                    <input type="text" name="nama"
-                        value="<?php echo $data['nama']; ?>" required>
-                </td>
-            </tr>
+                        <div class="mb-3">
+                            <label class="form-label">NIS</label>
+                            <input type="text" name="nis"
+                                   class="form-control" maxlength="10"
+                                   value="<?= $siswa['nis']; ?>" required>
+                        </div>
 
-            <tr>
-                <td>Jenis Kelamin</td>
-                <td>:</td>
-                <td>
-                    <input type="text" name="jenis_kelamin"
-                        value="<?php echo $data['jenis_kelamin']; ?>" required>
-                </td>
-            </tr>
+                        <div class="mb-3">
+                            <label class="form-label">NISN</label>
+                            <input type="text" name="nisn"
+                                   class="form-control" maxlength="10"
+                                   value="<?= $siswa['nisn']; ?>" required>
+                        </div>
 
-            <tr>
-                <td>Tanggal Lahir</td>
-                <td>:</td>
-                <td>
-                    <input type="text" name="tanggal_lahir"
-                        value="<?php echo $data['tanggal_lahir']; ?>" required>
-                </td>
-            </tr>
+                        <div class="mb-3">
+                            <label class="form-label">Nama Siswa</label>
+                            <input type="text" name="nama"
+                                   class="form-control"
+                                   value="<?= $siswa['nama']; ?>" required>
+                        </div>
 
-            <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td>
-                    <input type="text" name="alamat"
-                        value="<?php echo $data['alamat']; ?>" required>
-                </td>
-            </tr>
+                        <div class="mb-3">
+                            <label class="form-label">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" class="form-select" required>
+                                <option value="L"
+                                    <?= $siswa['jenis_kelamin'] == 'L' ? 'selected' : ''; ?>>
+                                    Laki-laki
+                                </option>
 
-            <tr>
-                <td>Status Aktif</td>
-                <td>:</td>
-                <td>
-                    <select name="status_aktif" required>
+                                <option value="P"
+                                    <?= $siswa['jenis_kelamin'] == 'P' ? 'selected' : ''; ?>>
+                                    Perempuan
+                                </option>
+                            </select>
+                        </div>
 
-                        <option value="1"
-                            <?php if ($data['status_aktif'] == 1) echo 'selected'; ?>>
-                            Aktif
-                        </option>
+                        <div class="mb-3">
+                            <label class="form-label">Tanggal Lahir</label>
+                            <input type="date" name="tanggal_lahir"
+                                   class="form-control"
+                                   min="2000-01-01" max="<?= date('Y-m-d'); ?>"
+                                   value="<?= $siswa['tanggal_lahir']; ?>" required>
+                        </div>
 
-                        <option value="0"
-                            <?php if ($data['status_aktif'] == 0) echo 'selected'; ?>>
-                            Tidak Aktif
-                        </option>
+                        <div class="mb-3">
+                            <label class="form-label">Alamat</label>
+                            <textarea name="alamat" class="form-control"
+                                      required><?= $siswa['alamat']; ?></textarea>
+                        </div>
 
-                    </select>
-                </td>
-            </tr>
+                        <div class="mb-3">
+                            <label class="form-label">Status Aktif</label>
+                            <select name="status_aktif" class="form-select" required>
+                                <option value="1"
+                                    <?= $siswa['status_aktif'] == 1 ? 'selected' : ''; ?>>
+                                    Aktif
+                                </option>
 
-            <tr>
-                <td colspan="3">
-                    <input type="submit" value="Update">
-                </td>
-            </tr>
+                                <option value="0"
+                                    <?= $siswa['status_aktif'] == 0 ? 'selected' : ''; ?>>
+                                    Tidak Aktif
+                                </option>
+                            </select>
+                        </div>
 
-        </table>
+                        <button type="submit" class="btn btn-primary">
+                            Simpan Perubahan
+                        </button>
 
-    </form>
+                        <a href="kelola_siswa.php" class="btn btn-secondary">
+                            Kembali
+                        </a>
 
-    <p>
-        <a href="kelola_siswa.php">Kembali ke Kelola Siswa</a>
-    </p>
+                    </form>
 
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
 </body>
 </html>

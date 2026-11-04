@@ -90,7 +90,7 @@ $hasil = mysqli_query($koneksi, $sql);
                             </td>
 
                             <td>
-                                <a href="edit_kelas.php?id=<?php
+                                <a href="edit_pelanggaran_kategori.php?id=<?php
                                     echo urlencode($row['id']);
                                 ?>" class="btn btn-info btn-sm mb-1">
                                     Edit

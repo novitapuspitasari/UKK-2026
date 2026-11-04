@@ -17,7 +17,6 @@ $kategori_id = filter_input(
 );
 $guru_id = filter_input(INPUT_POST, 'guru_id', FILTER_VALIDATE_INT);
 $poin = filter_input(INPUT_POST, 'poin', FILTER_VALIDATE_INT);
-
 $tanggal = $_POST['tanggal'] ?? '';
 $keterangan = trim($_POST['keterangan'] ?? '');
 $tindakan = trim($_POST['tindakan'] ?? '');

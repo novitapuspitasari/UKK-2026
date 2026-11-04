@@ -5,7 +5,7 @@ include 'config/koneksi.php';
 
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM t_guru WHERE id = '$id'";
+$sql = "SELECT * FROM t_tahun_ajaran WHERE id = '$id'";
 $hasil = mysqli_query($koneksi, $sql);
 $data = mysqli_fetch_assoc($hasil);
 ?>
@@ -27,7 +27,7 @@ $data = mysqli_fetch_assoc($hasil);
         <table>
 
             <tr>
-                <td>Nama</td>
+                <td>Nama Tahun Ajaran</td>
                 <td>:</td>
                 <td>
                     <input type="text" name="nama"
@@ -48,7 +48,7 @@ $data = mysqli_fetch_assoc($hasil);
                 <td>Tanggal Selesai</td>
                 <td>:</td>
                 <td>
-                    <input type="email" name="tanggal_selesai"
+                    <input type="text" name="tanggal_selesai"
                         value="<?php echo $data['tanggal_selesai']; ?>" required>
                 </td>
             </tr>
@@ -73,15 +73,7 @@ $data = mysqli_fetch_assoc($hasil);
                 </td>
             </tr>
 
-            <tr>
-                <td>User ID</td>
-                <td>:</td>
-                <td>
-                    <input type="number" name="user_id"
-                        value="<?php echo $data['user_id']; ?>">
-                </td>
-            </tr>
-
+        
             <tr>
                 <td colspan="3">
                     <input type="submit" value="Update">
