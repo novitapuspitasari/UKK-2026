@@ -115,21 +115,31 @@ if (!$hasil) {
         <!-- KONTEN UTAMA -->
         <main class="col-12 col-md-9 col-lg-10 p-3 p-md-4">
 
-            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-                <h3 class="mb-2">Laporan Pelanggaran Siswa</h3>
+                    <div class="container-fluid bg-light p-4">
 
-                <div class="mb-2">
-                    <button type="button"
-                            class="btn btn-danger btn-sm mr-1"
-                            onclick="cetakPDF()">
+            <div class="row align-items-center">
+
+                <div class="col-md-8">
+                    <h3 class="font-weight-bold">
+                        Laporan Pelanggaran Siswa
+                    </h3>
+
+                    <p>
+                        Selamat datang di halaman Kelola Jenis Pelanggaran.
+                    </p>
+                </div>
+
+                <div class="col-md-4 text-md-right mt-3 mt-md-0">
+                    <button class="btn btn-danger btn-sm">
                         Cetak PDF
                     </button>
 
-                    <a href="laporan.php?export=excel"
-                       class="btn btn-success btn-sm">
+                    <button class="btn btn-success btn-sm">
                         Export Excel
-                    </a>
+                    </button>
                 </div>
+
+            </div>
             </div>
 
             <div class="card shadow-sm">

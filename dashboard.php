@@ -37,7 +37,7 @@ $total_kelas = hitungData($koneksi, 't_kelas');
 
             <h2 class="fw-bold">Dashboard</h2>
             <p class="text-secondary">
-                Selamat datang, <b><?= htmlspecialchars($nama); ?></b>!
+                Selamat datang di halaman Dashboard <b><?= htmlspecialchars($nama); ?></b>
             </p>
 
             <?php if ($role == 'admin') { ?>

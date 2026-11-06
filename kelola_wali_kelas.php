@@ -150,9 +150,6 @@ if (!$hasil) {
 
                 </div>
 
-                <div class="card-footer text-muted">
-                    Sistem Pelanggaran Siswa
-                </div>
             </div>
 
         </main>

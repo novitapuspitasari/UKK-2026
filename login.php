@@ -1,53 +1,95 @@
-<!-- login.php -->
+
+<?php
+session_start();
+
+if (isset($_SESSION['pesan_error'])) {
+    $pesan_error = $_SESSION['pesan_error'];
+    unset($_SESSION['pesan_error']);
+}
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-     <title>Login - Sistem Pelanggaran Siswa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Sistem Pelanggaran Siswa</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-      <h1>Login Sistem Pelanggaran Siswa</h1>
 
-      <?php
-      session_start();
-      if (isset($_SESSION['pesan_error'])) {
-        echo '<p>' . $_SESSION['pesan_error'] . '<p>';
-        unset($_SESSION['pesan_error']);
-      }
-      ?>
+<body class="bg-light">
 
-      <!-- <form action="proses_login_admin.php" method="POST">
-        <table>
-            <tr>
-                <td>Email</td>
-                <td>:</td>
-                <td><input type="text" name="email" required></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>:</td>
-                <td><input type="password" name="password" required></td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <input type="submit" value="Login">
-                </td>
-            </tr>
-        </table>
-      </form> -->
-      <form action="proses_login_admin.php" method="POST">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+
+            <div class="col-md-6 col-lg-5 col-xl-4">
+
+                <div class="card shadow-lg border-0">
+
+                    <div class="card-body p-5">
+
+                        <div class="text-center mb-5">
+
+                            <h2 class="font-weight-bold text-primary">
+                                LOGIN
+                            </h2>
+
+                            <p>
+                                Silakan login untuk melanjutkan
+                            </p>
+
+                        </div>
+
+                        <?php if (isset($pesan_error)) : ?>
+                            <div class="alert alert-danger">
+                                <?= htmlspecialchars($pesan_error); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <form action="proses_login_admin.php" method="POST">
+
+                            <div class="form-group mb-4">
+                                <label class="font-weight-bold">Email</label>
+
+                                <input type="email"
+                                       name="email"
+                                       class="form-control form-control-lg"
+                                       placeholder="Masukkan email Anda"
+                                       required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label class="font-weight-bold">Password</label>
+
+                                <input type="password"
+                                       name="password"
+                                       class="form-control form-control-lg"
+                                       placeholder="Masukkan password Anda"
+                                       required>
+                            </div>
+
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg btn-block mt-4">
+                                SUBMIT
+                            </button>
+
+                        </form>
+
+                        <div class="text-center mt-5">
+                            <small class="text-muted">
+                            Sistem Pelanggaran Siswa
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
 </body>
 </html>

@@ -54,6 +54,9 @@ if (!$hasil) {
         <main class="col-md-9 col-lg-10 p-4">
 
             <h1 class="mb-4">Kelola Jenis Pelanggaran</h1>
+            <p>
+                    Selamat datang di halaman Kelola Jenis Pelanggaran.
+                </p>
 
             <?php if (isset($_SESSION['pesan_sukses'])) { ?>
                 <div class="alert alert-success">

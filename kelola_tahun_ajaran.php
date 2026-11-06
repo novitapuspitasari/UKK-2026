@@ -137,7 +137,7 @@ $(document).ready(function () {
     $('#tabelTahunAjaran').DataTable({
 
         language: {
-            search: "Cari:",
+            search: "Cari tahun ajaran:",
             lengthMenu: "Tampilkan _MENU_ data",
             info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
             infoEmpty: "Tidak ada data tahun ajaran",
