@@ -71,11 +71,19 @@ include 'includes/cek_session.php';
                                 Jurusan
                             </label>
 
-                            <input type="text"
-                                   name="jurusan"
-                                   id="jurusan"
-                                   class="form-control"
-                                   required>
+                            <select name="jurusan"
+                                    id="jurusan"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">-- Pilih Jurusan --</option>
+                                <option value="RPL">RPL</option>
+                                <option value="TKJ">TKJ</option>
+                                <option value="TKR">TKR</option>
+                                <option value="TSM">TSM</option>
+                                <option value="BD">BD</option>
+
+                            </select>
                         </div>
 
                         <div class="mb-4">

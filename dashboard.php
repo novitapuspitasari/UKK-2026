@@ -47,7 +47,7 @@ $total_kelas = hitungData($koneksi, 't_kelas');
                     <div class="col-md-4 mb-3">
                         <div class="card shadow-sm border-0">
                             <div class="card-body">
-                                <h5>🎓 Data Siswa</h5>
+                                <h5>Data Siswa</h5>
                                 <h2 class="text-primary"><?= $total_siswa; ?></h2>
                                 <a href="kelola_siswa.php" class="btn btn-primary btn-sm">
                                     Lihat Data
@@ -59,7 +59,7 @@ $total_kelas = hitungData($koneksi, 't_kelas');
                     <div class="col-md-4 mb-3">
                         <div class="card shadow-sm border-0">
                             <div class="card-body">
-                                <h5>👨‍🏫 Data Guru</h5>
+                                <h5>Data Guru</h5>
                                 <h2 class="text-success"><?= $total_guru; ?></h2>
                                 <a href="kelola_guru.php" class="btn btn-success btn-sm">
                                     Lihat Data
@@ -71,7 +71,7 @@ $total_kelas = hitungData($koneksi, 't_kelas');
                     <div class="col-md-4 mb-3">
                         <div class="card shadow-sm border-0">
                             <div class="card-body">
-                                <h5>🏫 Data Kelas</h5>
+                                <h5>Data Kelas</h5>
                                 <h2 class="text-warning"><?= $total_kelas; ?></h2>
                                 <a href="kelola_kelas.php" class="btn btn-warning btn-sm">
                                     Lihat Data

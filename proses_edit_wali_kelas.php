@@ -11,6 +11,21 @@ $tanggal_mulai = $_POST['tanggal_mulai'];
 $tanggal_selesai = $_POST['tanggal_selesai'];
 $status_aktif = (int) $_POST['status_aktif'];
 
+
+// Cek apakah sudah ada tahun ajaran aktif
+if ($status_aktif == 1) {
+
+    $cek = mysqli_query($koneksi,
+        "SELECT id FROM t_tahun_ajaran
+         WHERE status_aktif = 1"
+    );
+
+    if (mysqli_num_rows($cek) > 0) {
+        die("Gagal! Sudah ada tahun ajaran yang berstatus aktif. Nonaktifkan tahun ajaran sebelumnya terlebih dahulu.");
+    }
+}
+
+
 if ($tanggal_selesai < $tanggal_mulai) {
     exit('Tanggal selesai tidak boleh lebih awal dari tanggal mulai.');
 }

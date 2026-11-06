@@ -85,11 +85,11 @@ if (!$hasil) {
                             </td>
 
                             <td>
-                                <?php
-                                echo ($row['status_aktif'] == 1)
-                                    ? 'Aktif'
-                                    : 'Tidak Aktif';
-                                ?>
+                                <?php if ($row['status_aktif'] == 1) { ?>
+                                    <span class="badge bg-success">Aktif</span>
+                                <?php } else { ?>
+                                    <span class="badge bg-danger">Tidak Aktif</span>
+                                <?php } ?>
                             </td>
 
                             <td>

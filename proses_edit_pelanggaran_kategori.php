@@ -1,6 +1,6 @@
 
 <?php
-// proses_edit_kategori_pelanggaran.php
+// proses_edit_pelanggaran_kategori.php
 
 include 'includes/cek_session.php';
 include 'config/koneksi.php';

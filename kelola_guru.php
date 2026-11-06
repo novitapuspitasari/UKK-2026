@@ -41,6 +41,27 @@ if (!$hasil) {
             <h1>Kelola Guru</h1>
             <p>Selamat datang di halaman Kelola Guru.</p>
 
+            <?php
+                if (isset($_SESSION['pesan_sukses'])) {
+                    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+                    echo $_SESSION['pesan_sukses'];
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+
+                    unset($_SESSION['pesan_sukses']);
+                }
+            ?>
+            <?php
+                if (isset($_SESSION['pesan_error'])) {
+                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+                    echo $_SESSION['pesan_error'];
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+
+                    unset($_SESSION['pesan_error']);
+                }
+            ?>
+            
             <div class="mb-3">
                 <a href="dashboard.php" class="btn btn-primary">
                     Kembali ke Dashboard

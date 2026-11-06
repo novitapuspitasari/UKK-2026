@@ -19,12 +19,14 @@ $sql = "UPDATE t_guru SET
 
 if (mysqli_query($koneksi, $sql)) {
 
-    header("Location: kelola_guru.php");
+    $_SESSION['pesan_sukses'] = "Tahun ajaran berhasil diubah!";
+    header("Location: kelola_tahun_ajaran.php");
     exit;
 
 } else {
 
-    echo "Gagal mengubah data guru: " . mysqli_error($koneksi);
-
+    $_SESSION['pesan_error'] = "Tahun ajaran gagal diubah!";
+    header("Location: edit_tahun_ajaran.php?id=$id");
+    exit;
 }
 ?>
