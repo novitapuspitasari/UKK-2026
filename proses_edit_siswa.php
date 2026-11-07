@@ -25,12 +25,15 @@ $sql = "UPDATE t_siswa SET
 
 if (mysqli_query($koneksi, $sql)) {
 
+    $_SESSION['pesan_sukses'] = "Data siswa berhasil diperbarui.";
     header("Location: kelola_siswa.php");
     exit;
 
 } else {
 
-    echo "Gagal mengubah data siswa: " . mysqli_error($koneksi);
+   $_SESSION['pesan_error'] = "Data siswa gagal diperbarui.";
+    header("Location: kelola_siswa.php");
+    exit;
 
 }
 ?>

@@ -125,7 +125,7 @@ if (!$hasil) {
                     </h3>
 
                     <p>
-                        Selamat datang di halaman Kelola Jenis Pelanggaran.
+                        Selamat datang di halaman Laporan Pelanggaran Siswa
                     </p>
                 </div>
 
@@ -141,19 +141,10 @@ if (!$hasil) {
 
             </div>
             </div>
-
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Data Laporan Pelanggaran</h5>
-                </div>
-
-                <div class="card-body">
-
                     <div class="mb-3">
-                        <a href="dashboard.php" class="btn btn-secondary btn-sm">
+                        <a href="dashboard.php" class="btn btn-primary">
                             Kembali ke Dashboard
                         </a>
-                    </div>
 
                     <div class="table-responsive">
                         <table id="tabelLaporan"

@@ -1,11 +1,11 @@
+
 <?php
 // penempatan_siswa.php
 
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
-// Ambil siswa aktif yang BELUM ditempatkan
-// pada tahun ajaran yang sedang aktif
+// Ambil siswa aktif yang belum ditempatkan
 $siswa = mysqli_query(
     $koneksi,
     "SELECT s.id, s.nis, s.nama
@@ -27,7 +27,7 @@ $siswa = mysqli_query(
      ORDER BY s.nama ASC"
 );
 
-// Ambil hanya tahun ajaran yang aktif
+// Ambil tahun ajaran aktif
 $tahun = mysqli_query(
     $koneksi,
     "SELECT id, nama
@@ -36,7 +36,7 @@ $tahun = mysqli_query(
      ORDER BY id DESC"
 );
 
-// Ambil daftar kelas aktif
+// Ambil kelas aktif
 $kelas = mysqli_query(
     $koneksi,
     "SELECT id, nama, tingkat, jurusan
@@ -82,6 +82,35 @@ $hasil = mysqli_query($koneksi, $sql);
     <!-- DataTables Bootstrap 5 -->
     <link href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.min.css"
           rel="stylesheet">
+
+    <style>
+        /* Merapikan judul dan tanda panah tabel */
+        #tabelPenempatan thead th {
+            white-space: nowrap;
+        }
+
+        #tabelPenempatan thead th .dt-column-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        #tabelPenempatan thead th .dt-column-title {
+            flex: 1 1 auto;
+        }
+
+        #tabelPenempatan thead th .dt-column-order {
+            position: relative !important;
+            top: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            left: auto !important;
+            flex: 0 0 12px;
+            margin-left: 6px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -183,6 +212,7 @@ $hasil = mysqli_query($koneksi, $sql);
                                 </select>
 
                             </div>
+
                             <!-- PILIH TAHUN AJARAN -->
                             <div class="col-md-6 mb-3">
 
@@ -333,71 +363,69 @@ $hasil = mysqli_query($koneksi, $sql);
 
                             <tbody>
 
-                            <?php
-                            $no = 1;
+                                <?php
+                                $no = 1;
 
-                            while ($row = mysqli_fetch_assoc($hasil)) {
-                            ?>
+                                while ($row = mysqli_fetch_assoc($hasil)) {
+                                ?>
 
-                                <tr>
+                                    <tr>
 
-                                    <td>
-                                        <?= $no++ ?>
-                                    </td>
+                                        <td><?= $no++ ?></td>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['nis'] ?? '-') ?>
-                                    </td>
+                                        <td>
+                                            <?= htmlspecialchars($row['nis'] ?? '-') ?>
+                                        </td>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['nama_siswa'] ?? '-') ?>
-                                    </td>
+                                        <td>
+                                            <?= htmlspecialchars($row['nama_siswa'] ?? '-') ?>
+                                        </td>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['tahun_ajaran'] ?? '-') ?>
-                                    </td>
+                                        <td>
+                                            <?= htmlspecialchars($row['tahun_ajaran'] ?? '-') ?>
+                                        </td>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['nama_kelas'] ?? '-') ?>
-                                    </td>
+                                        <td>
+                                            <?= htmlspecialchars($row['nama_kelas'] ?? '-') ?>
+                                        </td>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['tingkat'] ?? '-') ?>
-                                    </td>
+                                        <td>
+                                            <?= htmlspecialchars($row['tingkat'] ?? '-') ?>
+                                        </td>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['jurusan'] ?? '-') ?>
-                                    </td>
+                                        <td>
+                                            <?= htmlspecialchars($row['jurusan'] ?? '-') ?>
+                                        </td>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['tanggal_mulai'] ?? '-') ?>
-                                    </td>
+                                        <td>
+                                            <?= htmlspecialchars($row['tanggal_mulai'] ?? '-') ?>
+                                        </td>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['tanggal_selesai'] ?? '-') ?>
-                                    </td>
+                                        <td>
+                                            <?= htmlspecialchars($row['tanggal_selesai'] ?? '-') ?>
+                                        </td>
 
-                                    <td>
+                                        <td>
 
-                                        <?php if ($row['status_aktif'] == 1) { ?>
+                                            <?php if ($row['status_aktif'] == 1) { ?>
 
-                                            <span class="badge bg-success">
-                                                Aktif
-                                            </span>
+                                                <span class="badge bg-success">
+                                                    Aktif
+                                                </span>
 
-                                        <?php } else { ?>
+                                            <?php } else { ?>
 
-                                            <span class="badge bg-danger">
-                                                Tidak Aktif
-                                            </span>
+                                                <span class="badge bg-danger">
+                                                    Tidak Aktif
+                                                </span>
 
-                                        <?php } ?>
+                                            <?php } ?>
 
-                                    </td>
+                                        </td>
 
-                                </tr>
+                                    </tr>
 
-                            <?php } ?>
+                                <?php } ?>
 
                             </tbody>
 

@@ -49,7 +49,7 @@ $hasil = mysqli_query($koneksi, $sql);
                 <table id="tabelKategori" class="table table-striped table-bordered table-hover align-middle">
                     <thead class="table-dark">
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Nama Kategori</th>
                             <th>Deskripsi</th>
                             <th>Status Aktif</th>

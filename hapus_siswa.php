@@ -42,11 +42,14 @@ mysqli_stmt_bind_param($stmt, "i", $id);
 if (mysqli_stmt_execute($stmt)) {
     mysqli_stmt_close($stmt);
 
+    $_SESSION['pesan_sukses'] = "Data siswa berhasil dihapus.";
     header('Location: kelola_siswa.php');
     exit;
 }
 
 mysqli_stmt_close($stmt);
 
-die('Gagal menghapus kelola siswa.');
+$_SESSION['pesan_error'] = "Data siswa gagal dihapus.";
+header('Location: kelola_siswa.php');
+exit;
 ?>

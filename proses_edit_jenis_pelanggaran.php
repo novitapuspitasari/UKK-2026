@@ -122,17 +122,12 @@ if (mysqli_stmt_execute($stmt)) {
 $kode_error = mysqli_stmt_errno($stmt);
 mysqli_stmt_close($stmt);
 
-if (mysqli_query($koneksi, $sql)) {
-
-    $_SESSION['pesan_sukses'] = "Jenis Pelanggaran berhasil diubah!";
-    header("Location: kelola_jenis_pelanggaran.php");
-    exit;
-
+if ($kode_error === 1062) {
+    $_SESSION['pesan_error'] = 'Kode pelanggaran sudah digunakan.';
 } else {
-
-    $_SESSION['pesan_error'] = "Tahun ajaran gagal diubah!";
-    header("Location: edit_jenis_pelanggaran.php?id=$id");
-    exit;
+    $_SESSION['pesan_error'] = 'Gagal memperbarui data jenis pelanggaran.';
 }
 
+header('Location: edit_jenis_pelanggaran.php?id=' . $id);
+exit;
 ?>
