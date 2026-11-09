@@ -138,7 +138,7 @@ if (!$data) {
                         </button>
 
                         <a href="kelola_kelas.php"
-                           class="btn btn-secondary">
+                           class="btn btn-danger">
                             Kembali
                         </a>
 

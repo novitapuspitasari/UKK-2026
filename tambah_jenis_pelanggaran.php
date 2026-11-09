@@ -44,7 +44,7 @@ if (!$kategori) {
                 <h2 class="mb-3">Tambah Jenis Pelanggaran</h2>
 
                 <a href="kelola_jenis_pelanggaran.php"
-                   class="btn btn-secondary">
+                   class="btn btn-primary">
                     Kembali ke Jenis Pelanggaran
                 </a>
             </div>
@@ -178,12 +178,12 @@ if (!$kategori) {
                         <!-- Tombol -->
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn btn-primary">
-                                Simpan Jenis Pelanggaran
+                                Update Jenis Pelanggaran
                             </button>
 
                             <a href="kelola_jenis_pelanggaran.php"
-                               class="btn btn-secondary">
-                                Batal
+                               class="btn btn-danger">
+                                Kembali
                             </a>
                         </div>
 

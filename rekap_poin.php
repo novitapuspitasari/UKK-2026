@@ -191,7 +191,7 @@ $jumlah_siswa = count($data_rekap);
                     </div>
 
                     <div class="d-flex gap-2 no-print">
-                        <a href="dashboard.php" class="btn btn-secondary">
+                        <a href="dashboard.php" class="btn btn-primary">
                             Kembali ke Dashboard
                         </a>
 

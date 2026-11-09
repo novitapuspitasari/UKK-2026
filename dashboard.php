@@ -89,8 +89,8 @@ $total_kelas = hitungData($koneksi, 't_kelas');
                     <div class="col-md-4 mb-3">
                         <div class="card shadow-sm border-0 h-100">
                             <div class="card-body">
-                                <h5>📝 Catat Pelanggaran</h5>
-                                <p>Catat pelanggaran siswa.</p>
+                                <h5>Catat Pelanggaran</h5>
+                                <p>Lihat Catat pelanggaran siswa.</p>
                                 <a href="catat_pelanggaran.php" class="btn btn-primary btn-sm">
                                     Catat Sekarang
                                 </a>
@@ -101,7 +101,7 @@ $total_kelas = hitungData($koneksi, 't_kelas');
                     <div class="col-md-4 mb-3">
                         <div class="card shadow-sm border-0 h-100">
                             <div class="card-body">
-                                <h5>📋 Riwayat Pelanggaran</h5>
+                                <h5>Riwayat Pelanggaran</h5>
                                 <p>Lihat riwayat pelanggaran siswa.</p>
                                 <a href="riwayat.php" class="btn btn-success btn-sm">
                                     Lihat Riwayat
@@ -113,7 +113,7 @@ $total_kelas = hitungData($koneksi, 't_kelas');
                     <div class="col-md-4 mb-3">
                         <div class="card shadow-sm border-0 h-100">
                             <div class="card-body">
-                                <h5>📊 Rekap Poin</h5>
+                                <h5>Rekap Poin</h5>
                                 <p>Lihat poin pelanggaran siswa.</p>
                                 <a href="rekap_poin.php" class="btn btn-warning btn-sm">
                                     Lihat Rekap

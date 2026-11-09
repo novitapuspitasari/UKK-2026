@@ -131,7 +131,7 @@ if (!$hasil) {
 
                                     <td class="text-center">
                                         <a href="edit_wali_kelas.php?id=<?= urlencode((string)$row['id']); ?>"
-                                           class="btn btn-info btn-sm mb-1">
+                                           class="btn btn-primary btn-sm mb-1">
                                             Edit
                                         </a>
 

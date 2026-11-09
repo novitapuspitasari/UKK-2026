@@ -4,7 +4,7 @@ session_start();
 include "config/koneksi.php";
 
 $nama = "Novita Puspitasari";
-$kelas = "XII RPL";
+$kelas = "XII RPL 1";
 $sekolah = "SMK Muhammadiyah Tasikmalaya";
 $jurusan = "Rekayasa Perangkat Lunak";
 $hobi = "Mendengarkan Musik";
@@ -37,8 +37,8 @@ $cita_cita = "Psikologi";
         }
 
         .foto-profil {
-            width: 190px;
-            height: 190px;
+            width: 240px;
+            height: 240px;
             object-fit: cover;
         }
     </style>
@@ -84,7 +84,7 @@ $cita_cita = "Psikologi";
                         <!-- FOTO PROFIL -->
                         <div class="text-center mb-4">
 
-                            <img src="img/novita.jpeg"
+                            <img src="img/novita.jpeg.jpeg"
                                  alt="Foto profil Novita"
                                  class="rounded-circle img-thumbnail mb-3 foto-profil">
 
@@ -98,7 +98,8 @@ $cita_cita = "Psikologi";
                             </p>
 
                             <span class="badge badge-primary p-2">
-                                Pelajar Rekayasa Perangkat Lunak
+                                SMK Muhammadiyah Tasikmalaya
+
                             </span>
 
                         </div>
@@ -203,7 +204,7 @@ $cita_cita = "Psikologi";
 
                     <!-- FOOTER -->
                     <div class="card-footer text-center text-muted">
-                        &copy; <?= date('Y'); ?>
+                        <?= date('Y'); ?>
                         <?= htmlspecialchars($nama); ?>
                     </div>
 

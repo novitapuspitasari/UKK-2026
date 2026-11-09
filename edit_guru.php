@@ -131,12 +131,13 @@ if (!$data) {
                             </select>
                         </div>
 
+                    
                         <button type="submit" class="btn btn-primary">
                             Update Guru
                         </button>
 
                         <a href="kelola_guru.php"
-                           class="btn btn-secondary">
+                           class="btn btn-danger">
                             Kembali
                         </a>
 

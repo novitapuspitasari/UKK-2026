@@ -83,7 +83,7 @@ $kategori = mysqli_stmt_get_result($stmt_kategori);
                 <h2 class="mb-3">Edit Jenis Pelanggaran</h2>
 
                 <a href="kelola_jenis_pelanggaran.php"
-                   class="btn btn-secondary">
+                   class="btn btn-primary">
                     Kembali ke Kelola Jenis Pelanggaran
                 </a>
             </div>
@@ -250,8 +250,8 @@ $kategori = mysqli_stmt_get_result($stmt_kategori);
                             </button>
 
                             <a href="kelola_jenis_pelanggaran.php"
-                               class="btn btn-secondary">
-                                Batal
+                               class="btn btn-danger">
+                                Kembali
                             </a>
 
                         </div>

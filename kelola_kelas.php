@@ -103,7 +103,7 @@ if (!$hasil) {
                             <td>
                                 <a href="edit_kelas.php?id=<?php
                                     echo urlencode($row['id']);
-                                ?>" class="btn btn-info btn-sm mb-1">
+                                ?>" class="btn btn-primary btn-sm mb-1">
                                     Edit
                                 </a>
 

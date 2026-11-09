@@ -216,7 +216,7 @@ if (!$hasil) {
                                             <div class="d-flex gap-2">
 
                                                  <a href="edit_jenis_pelanggaran.php?id=<?= urlencode($row['id']); ?>"
-                                                    class="btn btn-info btn-sm mb-1">
+                                                    class="btn btn-primary btn-sm mb-1">
                                                         Edit
                                                 </a>
 

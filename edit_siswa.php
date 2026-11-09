@@ -109,10 +109,10 @@ $siswa = mysqli_fetch_assoc($data);
                         </div>
 
                         <button type="submit" class="btn btn-primary">
-                            Simpan Perubahan
+                            Update Siswa
                         </button>
 
-                        <a href="kelola_siswa.php" class="btn btn-secondary">
+                        <a href="kelola_siswa.php" class="btn btn-danger">
                             Kembali
                         </a>
 

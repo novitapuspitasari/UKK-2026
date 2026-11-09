@@ -88,7 +88,7 @@ $jumlah = mysqli_num_rows($query);
                     </p>
                 </div>
 
-                <a href="dashboard.php" class="btn btn-secondary">
+                <a href="dashboard.php" class="btn btn-primary">
                     Kembali ke Dashboard
                 </a>
             </div>

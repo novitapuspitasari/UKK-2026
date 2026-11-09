@@ -103,7 +103,7 @@ $hasil = mysqli_query($koneksi, $sql);
 
                                         <td>
                                         <a href="edit_tahun_ajaran.php?id=<?= urlencode($row['id']); ?>"
-                                            class="btn btn-info btn-sm mb-1">
+                                            class="btn btn-primary btn-sm mb-1">
                                              Edit
                                         </a>
 

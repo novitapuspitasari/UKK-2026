@@ -146,6 +146,14 @@ if ($_SESSION['role'] === "admin") {
                 </a>
             </li>
 
+            <li class="nav-item mb-2">
+                <a href="laporan.php"
+                   class="nav-link <?= ($current_page == 'laporan.php') ? 'active' : 'text-white' ?>">
+                   Laporan
+                </a>
+            </li>
+            
+
             <hr class="text-secondary">
 
             <li class="nav-item">

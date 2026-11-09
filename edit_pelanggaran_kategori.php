@@ -118,11 +118,11 @@ if (!$data) {
 
                             <button type="submit"
                                     class="btn btn-primary btn-sm">
-                                Simpan Perubahan
+                                Update Pelanggaran Kategori
                             </button>
 
                             <a href="pelanggaran_kategori.php"
-                               class="btn btn-secondary btn-sm">
+                               class="btn btn-danger btn-sm">
                                 Kembali
                             </a>
 
