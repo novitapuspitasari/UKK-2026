@@ -292,7 +292,7 @@ $jumlah_siswa = count($data_rekap);
                                         Cari
                                     </button>
 
-                                    <a href="rekap_poin.php" class="btn btn-secondary">
+                                    <a href="rekap_poin.php" class="btn btn-danger">
                                         Reset
                                     </a>
                                 </div>

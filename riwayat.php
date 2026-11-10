@@ -153,7 +153,7 @@ $jumlah = mysqli_num_rows($query);
                                     Cari
                                 </button>
 
-                                <a href="riwayat.php" class="btn btn-secondary">
+                                <a href="riwayat.php" class="btn btn-danger">
                                     Reset
                                 </a>
                             </div>
