@@ -1,54 +1,57 @@
 <?php
 // hapus_catat_pelanggaran.php
-
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
-// Ambil ID pelanggaran dari URL
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-// Pastikan ID valid
 if ($id <= 0) {
+    $_SESSION['pesan_error'] = 'ID catatan pelanggaran tidak valid.';
     header('Location: catat_pelanggaran.php');
     exit;
 }
 
-// Cek apakah data pelanggaran tersedia
+// Hapus hanya jika status catatan belum Selesai
 $stmt = mysqli_prepare(
     $koneksi,
-    "SELECT id FROM t_pelanggaran_siswa WHERE id = ?"
+    "DELETE FROM t_pelanggaran_siswa
+     WHERE id = ?
+     AND status <> 'Selesai'"
 );
 
-mysqli_stmt_bind_param($stmt, "i", $id);
-mysqli_stmt_execute($stmt);
-$hasil = mysqli_stmt_get_result($stmt);
-
-if (mysqli_num_rows($hasil) === 0) {
-    mysqli_stmt_close($stmt);
+if (!$stmt) {
+    $_SESSION['pesan_error'] = 'Query hapus gagal diproses: ' . mysqli_error($koneksi);
     header('Location: catat_pelanggaran.php');
     exit;
 }
-
-mysqli_stmt_close($stmt);
-
-// Hapus data pelanggaran
-$stmt = mysqli_prepare(
-    $koneksi,
-    "DELETE FROM t_pelanggaran_siswa WHERE id = ?"
-);
 
 mysqli_stmt_bind_param($stmt, "i", $id);
 
 if (mysqli_stmt_execute($stmt)) {
-    mysqli_stmt_close($stmt);
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        $_SESSION['pesan_sukses'] = 'Catatan pelanggaran berhasil dihapus.';
+    } else {
+        // Tidak ada baris terhapus: ID tidak ada atau status sudah Selesai
+        $cek = mysqli_prepare(
+            $koneksi,
+            "SELECT status FROM t_pelanggaran_siswa WHERE id = ? LIMIT 1"
+        );
+        mysqli_stmt_bind_param($cek, "i", $id);
+        mysqli_stmt_execute($cek);
+        $data = mysqli_fetch_assoc(mysqli_stmt_get_result($cek));
+        mysqli_stmt_close($cek);
 
-    header('Location: catat_pelanggaran.php?pesan=hapus_berhasil');
-    exit;
+        if ($data && strcasecmp(trim($data['status']), 'Selesai') === 0) {
+            $_SESSION['pesan_error'] = 'Catatan berstatus Selesai tidak dapat dihapus.';
+        } else {
+            $_SESSION['pesan_error'] = 'Data catatan pelanggaran tidak ditemukan.';
+        }
+    }
+} else {
+    $_SESSION['pesan_error'] = 'Gagal menghapus catatan pelanggaran: ' . mysqli_stmt_error($stmt);
 }
 
 mysqli_stmt_close($stmt);
-
-// Jika gagal menghapus, misalnya karena relasi tabel
-header('Location: catat_pelanggaran.php?pesan=hapus_gagal');
+header('Location: catat_pelanggaran.php');
 exit;
 ?>
