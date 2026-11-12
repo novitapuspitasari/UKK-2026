@@ -258,14 +258,9 @@ mysqli_stmt_close($stmt);
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Kelas</label>
-                                <select name="kelas_id" id="kelas" class="form-select" required>
-                                    <?php while ($k = mysqli_fetch_assoc($kelas)) { ?>
-                                        <option value="<?= (int) $k['id']; ?>"
-                                            <?= (int) $data['kelas_id'] === (int) $k['id'] ? 'selected' : ''; ?>>
-                                            <?= htmlspecialchars($k['nama'] . ' - ' . $k['tingkat'] . ' - ' . $k['jurusan']); ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
+                                <input type="text" class="form-control" value="<?= htmlspecialchars($data['nama'] ?? '') ?>"
+                                   required>
+                                <input type="hidden" name="kelas_id" id="kelas_id">
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -281,11 +276,6 @@ mysqli_stmt_close($stmt);
                                 <small class="text-muted">Ketik nama pelanggaran untuk mencari.</small>
                             </div>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Guru Pelapor</label>
-                                <input type="text" class="form-control"
-                                       value="<?= htmlspecialchars($data['nama_guru'] ?? '-'); ?>" readonly>
-                            </div>
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Tanggal</label>
@@ -312,7 +302,8 @@ mysqli_stmt_close($stmt);
                         </div>
 
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                        <a href="catat_pelanggaran.php" class="btn btn-secondary">Kembali</a>
+                        
+                        <a href="catat_pelanggaran.php" class="btn btn-danger">Kembali</a>
                     </form>
                 </div>
             </div>
