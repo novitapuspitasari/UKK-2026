@@ -43,7 +43,7 @@ if ($role === "admin") {
 ?>
 
     <!-- SIDEBAR ADMIN -->
-    <div class="col-md-3 col-lg-2 bg-dark min-vh-100 p-3">
+    <div class="col-md-3 col-lg-2 bg-dark min-vh-100 p-3 sidebar-print-hide">
         <h4 class="text-white mb-4">
             Pelanggaran Siswa
         </h4>
@@ -153,7 +153,7 @@ elseif (
 ?>
 
     <!-- SIDEBAR WALI KELAS -->
-    <div class="col-md-3 col-lg-2 bg-dark min-vh-100 p-3">
+    <div class="col-md-3 col-lg-2 bg-dark min-vh-100 p-3 sidebar-print-hide">
         <h4 class="text-white mb-4">
             Pelanggaran Siswa
         </h4>
@@ -223,7 +223,7 @@ elseif ($role === "guru") {
 ?>
 
     <!-- SIDEBAR GURU -->
-    <div class="col-md-3 col-lg-2 bg-dark min-vh-100 p-3">
+    <div class="col-md-3 col-lg-2 bg-dark min-vh-100 p-3 sidebar-print-hide">
         <h4 class="text-white mb-4">
             Pelanggaran Siswa
         </h4>
