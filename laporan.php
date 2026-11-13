@@ -984,8 +984,3 @@ window.addEventListener('afterprint', function () {
 mysqli_stmt_close($stmt);
 
 ?>
-
-
-di bagian cetak nya sidebar jangan ada
-
-tolong sidebar saat cetak tidak ada
