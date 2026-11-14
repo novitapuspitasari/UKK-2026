@@ -86,6 +86,59 @@ $guru = mysqli_query(
                                name="id"
                                value="<?= htmlspecialchars((string)$data['id']) ?>">
 
+                                <!-- GURU -->
+                        <div class="mb-3">
+                            <label for="guru_id" class="form-label">
+                                Guru
+                            </label>
+
+                            <select name="guru_id"
+                                    id="guru_id"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">Pilih Guru</option>
+
+                                <?php while ($row = mysqli_fetch_assoc($guru)) { ?>
+                                    <option
+                                        value="<?= htmlspecialchars((string)$row['id']) ?>"
+                                        <?= $row['id'] == $data['guru_id']
+                                            ? 'selected' : '' ?>>
+
+                                        <?= htmlspecialchars($row['nama']) ?>
+
+                                    </option>
+                                <?php } ?>
+
+                            </select>
+                        </div>
+                         <!-- KELAS -->
+                        <div class="mb-3">
+                            <label for="kelas_id" class="form-label">
+                                Kelas
+                            </label>
+
+                            <select name="kelas_id"
+                                    id="kelas_id"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">Pilih Kelas</option>
+
+                                <?php while ($row = mysqli_fetch_assoc($kelas)) { ?>
+                                    <option
+                                        value="<?= htmlspecialchars((string)$row['id']) ?>"
+                                        <?= $row['id'] == $data['kelas_id']
+                                            ? 'selected' : '' ?>>
+
+                                        <?= htmlspecialchars($row['nama']) ?>
+
+                                    </option>
+                                <?php } ?>
+
+                            </select>
+                        </div>
+
                         <!-- TAHUN AJARAN -->
                         <div class="mb-3">
                             <label for="tahun_ajaran_id" class="form-label">
@@ -113,59 +166,8 @@ $guru = mysqli_query(
                             </select>
                         </div>
 
-                        <!-- KELAS -->
-                        <div class="mb-3">
-                            <label for="kelas_id" class="form-label">
-                                Kelas
-                            </label>
-
-                            <select name="kelas_id"
-                                    id="kelas_id"
-                                    class="form-select"
-                                    required>
-
-                                <option value="">Pilih Kelas</option>
-
-                                <?php while ($row = mysqli_fetch_assoc($kelas)) { ?>
-                                    <option
-                                        value="<?= htmlspecialchars((string)$row['id']) ?>"
-                                        <?= $row['id'] == $data['kelas_id']
-                                            ? 'selected' : '' ?>>
-
-                                        <?= htmlspecialchars($row['nama']) ?>
-
-                                    </option>
-                                <?php } ?>
-
-                            </select>
-                        </div>
-
-                        <!-- GURU -->
-                        <div class="mb-3">
-                            <label for="guru_id" class="form-label">
-                                Guru
-                            </label>
-
-                            <select name="guru_id"
-                                    id="guru_id"
-                                    class="form-select"
-                                    required>
-
-                                <option value="">Pilih Guru</option>
-
-                                <?php while ($row = mysqli_fetch_assoc($guru)) { ?>
-                                    <option
-                                        value="<?= htmlspecialchars((string)$row['id']) ?>"
-                                        <?= $row['id'] == $data['guru_id']
-                                            ? 'selected' : '' ?>>
-
-                                        <?= htmlspecialchars($row['nama']) ?>
-
-                                    </option>
-                                <?php } ?>
-
-                            </select>
-                        </div>
+                       
+                       
 
                         <!-- TANGGAL MULAI -->
                         <div class="mb-3">

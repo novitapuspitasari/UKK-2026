@@ -1,17 +1,20 @@
-
 <?php
 // kelola_wali_kelas.php
+
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
+// Mengambil data wali kelas beserta nama kelas dan guru
 $sql = "SELECT
             w.*,
             k.nama AS nama_kelas,
-            g.nama AS nama_guru
+            g.nama AS nama_guru,
+            t.nama AS tahun_ajaran
         FROM t_wali_kelas w
         LEFT JOIN t_kelas k ON w.kelas_id = k.id
         LEFT JOIN t_guru g ON w.guru_id = g.id
-        ORDER BY g.nama ASC";
+        LEFT JOIN t_tahun_ajaran t ON w.tahun_ajaran_id = t.id
+        ORDER BY w.id DESC";
 
 $hasil = mysqli_query($koneksi, $sql);
 
@@ -22,200 +25,269 @@ if (!$hasil) {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kelola Wali Kelas - Sistem Pelanggaran Siswa</title>
-
-    <!-- Bootstrap 4.6.2 -->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-    <!-- DataTables Bootstrap 4 -->
-    <link rel="stylesheet"
-          href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
-</head>
-
-<body class="bg-light">
-
-<div class="container-fluid">
-    <div class="row">
-
-        <!-- SIDEBAR -->
-        <?php include 'layout/sidebar.php'; ?>
-
-        <!-- KONTEN UTAMA -->
-        <main class="col-md-9 col-lg-10 p-4">
-
-            <!-- JUDUL -->
-            <div class="mb-4">
-                <h1 class="text font-bold">
-                    Kelola Wali Kelas
-                </h1>
-
-                <p class="text-muted">
-                    Kelola data guru dan kelas yang menjadi wali kelas.
-                </p>
-            </div>
-
-            <!-- TOMBOL -->
-             <div class="mb-3">
-                <a href="dashboard.php" class="btn btn-primary">
-                    Kembali ke Dashboard
-                </a>
-
-                <a href="tambah_wali_kelas.php"
-                   class="btn btn-success">
-                    + Tambah Wali Kelas
-                </a>
-            </div>
-
-            <!-- CARD TABEL -->
+    <title>Kelola Wali Kelas</title>
             
 
-                <div class="card-body">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
-                    <div class="table-responsive">
-                        <table id="tabelWaliKelas"
-                               class="table table-bordered table-striped table-hover">
+    <!-- DataTables Bootstrap 5 -->
+    <link href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.min.css"
+        rel="stylesheet">
 
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Guru</th>
-                                    <th>Kelas</th>
-                                    <th>Status Aktif</th>
-                                    <th>Dibuat</th>
-                                    <th>Diubah</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-                            <tbody>
-                                <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
-                                <tr>
-                                    <!-- Nomor otomatis -->
-                                    <td class="text-center"></td>
+        .card-header {
+            background-color: #212529;
+            color: white;
+            font-weight: bold;
+        }
 
-                                    <td>
-                                        <?= htmlspecialchars($row['nama_guru'] ?? '-'); ?>
-                                    </td>
+        .table thead th {
+            white-space: nowrap;
+        }
 
-                                    <td>
-                                        <?= htmlspecialchars($row['nama_kelas'] ?? '-'); ?>
-                                    </td>
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
 
-                                    <td class="text-center">
-                                        <?php if (
-                                            isset($row['status_aktif']) &&
-                                            (int)$row['status_aktif'] === 1
-                                        ) { ?>
-                                            <span class="badge badge-success">
-                                                Aktif
-                                            </span>
-                                        <?php } else { ?>
-                                            <span class="badge badge-secondary">
-                                                Tidak Aktif
-                                            </span>
-                                        <?php } ?>
-                                    </td>
+</head>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['created_at'] ?? ''); ?>
-                                    </td>
+<body>
 
-                                    <td>
-                                        <?= htmlspecialchars($row['updated_at'] ?? ''); ?>
-                                    </td>
+    <div class="container-fluid">
 
-                                    <td class="text-center">
-                                        <a href="edit_wali_kelas.php?id=<?= urlencode((string)$row['id']); ?>"
-                                           class="btn btn-primary btn-sm mb-1">
-                                            Edit
-                                        </a>
+        <div class="row">
+    
+            <!-- SIDEBAR -->
+            <?php include 'layout/sidebar.php'; ?>
 
-                                        <a href="hapus_wali_kelas.php?id=<?= urlencode((string)$row['id']); ?>"
-                                           class="btn btn-danger btn-sm mb-1"
-                                           onclick="return confirm('Yakin ingin menghapus data wali kelas ini?');">
-                                            Hapus
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
+            <!-- KONTEN UTAMA -->
+            <main class="col-md-9 col-lg-10 p-4">
 
-                        </table>
-                    </div>
+                <!-- JUDUL HALAMAN -->
+                <h1 class="mb-3">Kelola Wali Kelas</h1>
+                    <p>Selamat datang di halaman Kelola Wali Kelas.</p>
+
+                <!-- TOMBOL NAVIGASI -->
+                <div class="mb-3">
+
+                    <a href="dashboard.php" class="btn btn-primary">
+                        Kembali ke Dashboard
+                    </a>
+
+                    <a href="tambah_wali_kelas.php" class="btn btn-success">
+                        + Tambah Wali Kelas
+                    </a>
 
                 </div>
 
-            </div>
+                <!-- CARD DAFTAR WALI KELAS -->
+                <div class="card shadow-sm">
 
-        </main>
+                    <!-- HEADER CARD -->
+                    <div class="card-header">
+                        Daftar Wali Kelas
+                    </div>
+
+                    <!-- BODY CARD -->
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+
+                            <table id="tabelWaliKelas"
+                                class="table table-striped table-bordered table-hover align-middle w-100">
+
+                                <!-- HEADER TABEL -->
+                                <thead class="table-dark">
+
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Guru</th>
+                                        <th>Kelas</th>
+                                        <th>Tahun Ajaran</th>
+                                        <th>Tanggal Mulai</th>
+                                        <th>Tanggal Selesai</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+
+                                </thead>
+
+                                <!-- ISI TABEL -->
+                                <tbody>
+
+                                    <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
+
+                                        <tr>
+
+                                            <!-- Nomor urut otomatis -->
+                                            <td></td>
+
+                                            <td>
+                                                <?= htmlspecialchars($row['nama_guru'] ?? '-') ?>
+                                            </td>
+
+                                             <td>
+                                                <?= htmlspecialchars($row['nama_kelas'] ?? '-') ?>
+                                            </td>
+
+                                            <td>
+                                            <?= htmlspecialchars($row['tahun_ajaran'] ?? '-') ?>
+                                            </td>
+
+                                            <td>
+                                                <?= htmlspecialchars($row['tanggal_mulai'] ?? '-') ?>
+                                            </td>
+
+                                            <td>
+                                                <?= htmlspecialchars($row['tanggal_selesai'] ?? '-') ?>
+                                            </td>
+
+                                            <!-- STATUS AKTIF -->
+                                            <td>
+
+                                                <?php if ((int) ($row['status_aktif'] ?? 0) === 1) { ?>
+
+                                                    <span class="badge bg-success">
+                                                        Aktif
+                                                    </span>
+
+                                                <?php } else { ?>
+
+                                                    <span class="badge bg-secondary">
+                                                        Tidak Aktif
+                                                    </span>
+
+                                                <?php } ?>
+
+                                            </td>
+
+                                            <!-- TOMBOL AKSI -->
+                                            <td>
+
+                                                <div class="d-flex gap-2">
+
+                                                    <a href="edit_wali_kelas.php?id=<?= urlencode((string) $row['id']) ?>"
+                                                        class="btn btn-primary btn-sm">
+                                                        Edit
+                                                    </a>
+
+                                                    <a href="hapus_wali_kelas.php?id=<?= urlencode((string) $row['id']) ?>"
+                                                        class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('Yakin ingin menghapus data wali kelas ini?');">
+                                                        Hapus
+                                                    </a>
+
+                                                </div>
+
+                                            </td>
+
+                                        </tr>
+
+                                    <?php } ?>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
     </div>
-</div>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- Bootstrap 4 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- DataTables -->
-<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap4.min.js"></script>
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
 
-<script>
-$(document).ready(function () {
-    $('#tabelWaliKelas').DataTable({
-        pageLength: 10,
-        lengthMenu: [5, 10, 25, 50, 100],
-        ordering: true,
-        searching: true,
+    <!-- DataTables Bootstrap 5 -->
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.bootstrap5.min.js"></script>
 
-        // Urutan awal berdasarkan nama guru
-        order: [[1, 'asc']],
 
-        language: {
-            lengthMenu: "Tampilkan _MENU_ data",
-            zeroRecords: "Data wali kelas tidak ditemukan",
-            emptyTable: "Belum ada data wali kelas",
-            info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-            infoEmpty: "Menampilkan 0 sampai 0 dari 0 data",
-            infoFiltered: "(difilter dari _MAX_ total data)",
-            search: "Cari wali kelas:",
-            paginate: {
-                first: "Pertama",
-                last: "Terakhir",
-                next: "Selanjutnya",
-                previous: "Sebelumnya"
-            }
-        },
+    <!-- INISIALISASI DATATABLES -->
+    <script>
+        $(document).ready(function() {
 
-        // Kolom nomor tidak ikut diurutkan
-        columnDefs: [
-            {
-                targets: 0,
-                orderable: false,
-                searchable: false
-            }
-        ],
+            var tabel = $('#tabelWaliKelas').DataTable({
 
-        // Nomor mengikuti urutan dan halaman yang tampil
-        drawCallback: function () {
-            const api = this.api();
-            const info = api.page.info();
+                language: {
 
-            api.column(0, { page: 'current' })
-                .nodes()
-                .each(function (cell, i) {
-                    cell.innerHTML = info.start + i + 1;
-                });
-        }
-    });
-});
-</script>
+                    search: "Cari:",
+
+                    lengthMenu: "Tampilkan _MENU_ data",
+
+                    info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+
+                    infoEmpty: "Tidak ada data wali kelas",
+
+                    infoFiltered: "(difilter dari _MAX_ total data)",
+
+                    zeroRecords: "Data wali kelas tidak ditemukan",
+
+                    emptyTable: "Belum ada data wali kelas",
+
+                    paginate: {
+                        first: "Pertama",
+                        last: "Terakhir",
+                        next: "Berikutnya",
+                        previous: "Sebelumnya"
+                    }
+
+                },
+
+                pageLength: 10,
+
+                lengthMenu: [5, 10, 25, 50, 100],
+
+                order: [],
+
+                columnDefs: [{
+                    targets: [0, 7],
+                    orderable: false,
+                    searchable: false
+                }],
+
+                // Nomor urut otomatis
+                drawCallback: function() {
+
+                    var api = this.api();
+
+                    var info = api.page.info();
+
+                    api.column(0, {
+                        page: 'current'
+                    }).nodes().each(function(cell, i) {
+
+                        cell.innerHTML = info.start + i + 1;
+
+                    });
+
+                }
+
+            });
+
+        });
+    </script>
 
 </body>
+
 </html>

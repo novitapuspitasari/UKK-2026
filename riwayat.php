@@ -1,8 +1,45 @@
+
 <?php
 // riwayat.php
 
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
+
+// ========================================
+// AMBIL DATA SESSION
+// ========================================
+
+$role = strtolower(trim($_SESSION['role'] ?? ''));
+$id_user = (int) ($_SESSION['id'] ?? $_SESSION['id_user'] ?? 0);
+
+// ========================================
+// CEK GURU YANG SEDANG LOGIN
+// ========================================
+
+$guru_id = 0;
+
+if ($role == 'guru' || $role == 'wali kelas' || $role == 'wali_kelas') {
+
+    $stmt_guru = mysqli_prepare(
+        $koneksi,
+        "SELECT id FROM t_guru WHERE user_id = ? AND status_aktif = 1 LIMIT 1"
+    );
+
+    mysqli_stmt_bind_param($stmt_guru, "i", $id_user);
+    mysqli_stmt_execute($stmt_guru);
+
+    $hasil_guru = mysqli_stmt_get_result($stmt_guru);
+
+    if ($data_guru = mysqli_fetch_assoc($hasil_guru)) {
+        $guru_id = (int) $data_guru['id'];
+    }
+
+    mysqli_stmt_close($stmt_guru);
+}
+
+// ========================================
+// PENCARIAN DAN FILTER
+// ========================================
 
 $cari = isset($_GET['cari'])
     ? mysqli_real_escape_string($koneksi, trim($_GET['cari']))
@@ -12,10 +49,28 @@ $status = isset($_GET['status'])
     ? mysqli_real_escape_string($koneksi, trim($_GET['status']))
     : '';
 
+// ========================================
+// QUERY RIWAYAT
+// ========================================
+
 $sql = "SELECT *
         FROM t_pelanggaran_siswa
         WHERE 1=1";
 
+// Jika login sebagai guru/wali kelas,
+// tampilkan hanya pelanggaran yang dicatat sendiri.
+
+if ($role == 'guru' || $role == 'wali kelas' || $role == 'wali_kelas') {
+
+    if ($guru_id > 0) {
+        $sql .= " AND guru_id = $guru_id";
+    } else {
+        // Jika guru tidak ditemukan, jangan tampilkan data guru lain.
+        $sql .= " AND 1=0";
+    }
+}
+
+// Pencarian
 if ($cari != '') {
     $sql .= " AND (
         nama_siswa LIKE '%$cari%'
@@ -25,6 +80,7 @@ if ($cari != '') {
     )";
 }
 
+// Filter status
 if ($status != '') {
     $sql .= " AND status = '$status'";
 }
@@ -39,6 +95,7 @@ if (!$query) {
 
 $jumlah = mysqli_num_rows($query);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
